@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 func Printcomb() {
 	for n1 := 0; n1 <= 7; n1++ {

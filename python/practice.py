@@ -1,38 +1,39 @@
+# square = lambda x : x**2
 
-first_name = 'Asabeneh'
-last_name = 'Yetayeh'
-country = 'Finland'
-city = 'Helsinki'
-age = 250
-is_married = True
-skills = ['HTML', 'CSS', 'JS', 'React', 'Python']
-person_info = {
-    'firstname':'Asabeneh', 
-    'lastname':'Yetayeh', 
-    'country':'Finland',
-    'city':'Helsinki'
-    }
+# file = open("demofile.txt", "wt")
+# number = (int(input("Enter A Number:\n")))
+# result = square(number)
 
-# Printing the values stored in the variables
+# file.write(str(result))
 
-print('First name:', first_name)
-print('First name length:', len(first_name))
-print('Last name: ', last_name)
-print('Last name length: ', len(last_name))
-print('Country: ', country)
-print('City: ', city)
-print('Age: ', age)
-print('Married: ', is_married)
-print('Skills: ', skills)
-print('Person information: ', person_info)
 
-# Declaring multiple variables in one line
+import random, string
 
-first_name, last_name, country, age, is_married = 'Asabeneh', 'Yetayeh', 'Helsink', 250, True
-
-print(first_name, last_name, country, age, is_married)
-print('First name:', first_name)
-print('Last name: ', last_name)
-print('Country: ', country)
-print('Age: ', age)
-print('Married: ', is_married)
+def gen_password(lent=8):
+    if lent < 8:
+        return "Password not Allowed"
+    
+    # uppercase_letter = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" lowercase_letter = "abcdefghijklmnopqrstuvwxyz" digit_num = "0123456789" special_char = "!@#$"
+    
+    uppercase = random.choice(string.ascii_uppercase)
+    lowercase = random.choice(string.ascii_lowercase)
+    digit = random.choice(string.digits)
+    special_character = random.choice(string.punctuation)
+    
+    password = uppercase + lowercase + digit + special_character 
+    
+    all = string.ascii_lowercase + string.ascii_lowercase + string.digits + string.punctuation
+    other = len(all) - len(password)
+    
+    convert_other = str(other)
+    random.choice(str(convert_other))
+    password += convert_other
+    
+    result = ""
+    result += password
+    # final_result = random.shuffle(result)
+    return result
+    
+print(gen_password()) 
+print(gen_password(5)) 
+print(gen_password(12)) 
