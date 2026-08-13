@@ -118,7 +118,7 @@ import (
 func main() {
 	number := 1
 
-	for number <= 500{
+	// for number <= 500{
 		fmt.Println(strings.Repeat("*", number))
 		number++
 	}
