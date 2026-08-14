@@ -92,3 +92,21 @@ while number <= 20:                                                          # w
                                                                             # print("weight in kilogram: " + conversion1 + 'kg')
     
 
+def my_sum(*args):
+    result = 0
+    for param in args:
+        result += param
+    return result
+
+print(my_sum( 10, 20, 30, 40, 50, 60, 70, 80))
+
+list1 =[1, 2, 3]
+list2 =[4, 5, 6]
+
+result = [*list1, 'Go', *list2]
+# result = [*[1, 2, 3], 'Go', *[4, 5, 6]] the work of the '*' is to unpack the list. so it becomes -> [1, 2, 3, 'Go', 4, 5, 6]
+print(result)
+name = input('Enter your name:')
+year_born = input('Year you born:')
+age = 2019 - int(year_born)
+print(f'You are {name}. And your age is {age}.')

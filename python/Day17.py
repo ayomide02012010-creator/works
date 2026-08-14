@@ -70,8 +70,12 @@ finally:
     
 print('=============4============')
 def safe_list_access(lst, index):
-    lst = [3,4,5,6,7]
     return lst[index]
+try:
+    lst = [3,4,5,6,7]
+    print(lst[5])
+except Exception as e:
+    print(e)
 
 print('=============5============')
 scores = [88, 92, 79, 95]
@@ -86,24 +90,27 @@ first, *middle, last = numbers
 print(first, middle, last)
 
 print('=============7============')
-# def discribe_book(title, author, year, pages):
-#     book = {'title': 'Dune', 'author': 'Frank Herbert', 'year': 1965, 'pages': 412}
-#     return book#({f'title: {title}, author: {author}, year: {year}, pages: {pages}'})
+def discribe_book(title, author, year, pages):
+    return f'title: {title}, author: {author}, year: {year}, pages: {pages}'
 
-# print(discribe_book(**book))
+book = {'title': 'Dune', 'author': 'Frank Herbert', 'year': 1965, 'pages': 412}
+print(discribe_book(**book))
 #===========8==============
-#===========9==============
+
+
+print('===========9==============')
+
 weekdays = ['Mon','Tue','Wed','Thu','Fri']
 weekend = ['Sat','Sun']
 full_week = [*weekdays, *weekend]
+
 print(full_week) 
-#===========10==============
+print('===========10==============')
 students = ['Ana', 'Ben', 'Cleo']
 grades = [85, 91, 76]
 
-countries = ['Finland', 'Sweden', 'Norway', 'Denmark', 'Iceland']
-for index, i in enumerate(countries):
-    print('hi')
-    if i == 'Finland':
-        print(f'The country {i} has been found at index {index}')
-
+for st, gr in zip(students, grades):
+    result.append('1.',st,'scored', gr)
+    print(result)
+    
+    
