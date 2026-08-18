@@ -109,8 +109,7 @@ print('===========10==============')
 students = ['Ana', 'Ben', 'Cleo']
 grades = [85, 91, 76]
 
-for st, gr in zip(students, grades):
-    result.append('1.',st,'scored', gr)
-    print(result)
+for index, (st, gr) in enumerate(zip(students, grades)):
+    print(f"{index}: {st} scored {gr}")
     
     
