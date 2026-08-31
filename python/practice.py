@@ -108,5 +108,12 @@ result = [*list1, 'Go', *list2]
 print(result)
 name = input('Enter your name:')
 year_born = input('Year you born:')
-age = 2019 - int(year_born)
+age = 2026 - int(year_born)
 print(f'You are {name}. And your age is {age}.')
+print(abs(complex(2+3j)))
+print(abs(complex(-2+3j)))
+from fractions import Fraction
+print(abs(Fraction("1/2")))
+print(abs(Fraction("-1/2")))
+
+print(abs(Fraction("1/2")))
