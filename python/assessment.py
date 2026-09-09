@@ -13,6 +13,7 @@ wins = 0
 losses = 0
 rounds = 0
 score = 0
+history = []
 def flip_coin():
   user_input = input("Choose Heads or Tails: ").lower().strip()
   while user_input != "heads" and user_input != "tails":
@@ -25,7 +26,7 @@ def flip_coin():
     result = "won"
   else:
     result = "lost"
-  return {"user": user_input,"computer": machine_output,"result": result}
+  return {"user": user_input,"computer": machine_output,"result": result }
 def calculate_win_rate(wins, rounds):
   if rounds > 0:
     win_rate = wins/rounds * 100
@@ -58,12 +59,12 @@ def show_summary(wins, losses, rounds, score):
   print(f'Round Played:{rounds}')
   print(f"wins: {wins}")
   print(f"losses: {losses}")
-  print(f"Final score:{score}")
   print(f"Win Rate: {wrate:.2f}%")
   print(f"Loss Rate: {lrate:.2f}%")
   print('------------------------')
 while True:
   game = flip_coin()
+  history.append(f'Round {rounds + 1}: You Picked {game["user"]} | Computer picked {game["computer"]} | Result: {game["result"]}')
   print("You Pick:", game['user'])
   print("Computer Pick:", game["computer"])
   if game["result"] == "won":
@@ -85,19 +86,23 @@ while True:
   if  another_try == 'yes':
     continue
   elif another_try == 'no':
-    print("Thanks for playing!")  
+    print("Thanks for playing!")
+    print(f"Final score:{score}")
+    print('=' * 8 + 'HISTORY' + '=' * 8)
+    for record in history:
+      print(record)
     break
 # ======================3========================
-import random
-names = input("Enter two or more names(preceeding each name with ','): ").split(',')
-while len(names) < 2:
-    print('Enter at least two names.')
-    names = input('Enter two or more names: ').split(',')
-while True:
-  if len(names) > 1: 
-    person_to_pay = random.choice(names)
-    print(f'{person_to_pay}, Sorry the bill is on You')
-    break
+# import random
+# names = input("Enter two or more names(preceeding each name with ','): ").split(',')
+# while len(names) < 2:
+#     print('Enter at least two names.')
+#     names = input('Enter two or more names: ').split(',')
+# while True:
+#   if len(names) > 1: 
+#     person_to_pay = random.choice(names)
+#     print(f'{person_to_pay}, Sorry the bill is on You')
+#     break
   
   
   
