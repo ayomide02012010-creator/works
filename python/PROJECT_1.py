@@ -1,9 +1,10 @@
 import random
 print('Welcome to the Number Guessing Game!')
-def get_guess():
+
+def get_guess(Attempt, total_attempt):
   while True:
     try:
-      user_guess = int(input(f'Enter your guess: '))    
+      user_guess = int(input(f'Attempt {Attempt}/{total_attempt} - Enter your guess: '))    
       return user_guess 
     except ValueError:
       print('Please enter a valid number.')
@@ -22,23 +23,29 @@ def generate_secret_number(maximum_number):
     return random.choice(range(1, maximum_number+1))
 def play_game():
     maximum_num, attempts = choose_difficulty()
+    total_attempts = attempts
     secret_num = generate_secret_number(maximum_num)
+    Attempt = 1
     while True:
-        player_guess = get_guess()
-        attempts -= 1
-        score = attempts+1
-        if player_guess == secret_num:
-            print('Correct! 🎉')
-            print(f'Score = {score}')
-            break
-        elif player_guess < secret_num :
-            print('Too low! Try higher.')
-            print(f'Attempts remaining: {attempts}')
-        elif player_guess > secret_num :
-            print('Too high! Try lower.')
-            print(f'Attempts remaining: {attempts}')
-        if attempts == 0:
-            print(f'Game Over!\nThe number was {secret_num}.\nScore = {score - 1}')
-            break
-        
+      player_guess = get_guess(Attempt, total_attempts)
+      while player_guess > maximum_num or player_guess <= 0:
+        print(f'Please enter a number between 1 and {maximum_num}')
+        player_guess = get_guess(Attempt, total_attempts)
+      Attempt += 1
+      attempts -= 1
+      score = attempts
+      if player_guess == secret_num:
+          print(f'🎉 Correct! You got it in {Attempt-1} attempts!')
+          print(f'Your score = {score}')
+          break
+      elif player_guess < secret_num :
+        print('📉 Too low! Try higher.')
+        print(f'Attempts remaining: {attempts}')  
+      elif player_guess > secret_num :
+        print('📈 Too high! Try lower.')
+        print(f'Attempts remaining: {attempts}')
+      if attempts == 0:
+          print(f'Game Over!\nThe number was {secret_num}.\nScore = {score}')
+          break
+      
 play_game()
