@@ -1,5 +1,12 @@
 from utils import generate_secret_number
 from utils import calculate_score
+
+EASY_MAX = 50
+EASY_ATTEMPTS = 10
+MEDIUM_MAX = 100
+MEDIUM_ATTEMPTS = 7
+HARD_MAX = 200
+HARD_ATTEMPTS = 5
 def get_guess(Attempt, total_attempt):
   while True:
     try:
@@ -14,13 +21,13 @@ def choose_difficulty():
       print()
       if difficulty_level == 1:
         print("I'm thinking of a number between 1 and 50\nYou have 10 attempts.\n")
-        return 50, 10
+        return EASY_MAX, EASY_ATTEMPTS
       elif difficulty_level == 2:
         print("I'm thinking of a number between 1 and 100\nYou have 7 attempts.\n")
-        return 100, 7
+        return MEDIUM_MAX, MEDIUM_ATTEMPTS
       elif difficulty_level == 3:
         print("I'm thinking of a number between 1 and 200\nYou have 5 attempts.\n")
-        return 200, 5
+        return HARD_MAX, HARD_ATTEMPTS
       else:
         print("Please choose 1, 2, or 3")
     except ValueError:
