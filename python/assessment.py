@@ -49,13 +49,13 @@ def check_statistics(wins, losses, rounds):
 def show_summary(wins, losses, rounds, score):
   check_stat = check_statistics(wins, losses, rounds)
   if check_stat:
-    print("Statistics are correct!")
+    print("Statistics are correct!\n")
   else:
     print("Something is wrong with the statistics!")
 
   wrate = calculate_win_rate(wins, rounds)
   lrate = calculate_loss_rate(losses, rounds)
-  print('========SUMMARY========')
+  print('=' * 8 + 'SUMMARY' + '=' * 8)
   print(f'Round Played:{rounds}')
   print(f"wins: {wins}")
   print(f"losses: {losses}")
@@ -83,11 +83,10 @@ while True:
   while another_try != 'yes' and another_try != 'no':
     print('Please enter yes or no.')
     another_try = input('Play again? ').lower().strip()
-  if  another_try == 'yes':
+  if another_try == 'yes':
     continue
   elif another_try == 'no':
-    print("Thanks for playing!")
-    print(f"Final score:{score}")
+    print(f"\nThanks for playing!\nFinal score:{score}")
     print('=' * 8 + 'HISTORY' + '=' * 8)
     for record in history:
       print(record)
