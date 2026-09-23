@@ -115,19 +115,39 @@
 # from fractions import Fraction
 # print(abs(Fraction("1/2")))
 # print(abs(Fraction("-1/2")))
-
 # print(abs(Fraction("1/2")))
-name = input('Enter file:')
-handle = open(name)
-counts = dict()
-for line in handle:
-    words = line.split()
-    for word in words:
-      counts[word] = counts.get(word, 0) + 1  
-bigcount = None
-bigword = None
-for word,count in counts.items():
-    if bigcount is None or count > bigcount:
-        bigword = word
-        bigcount = count
-print(bigword, bigcount)
+
+
+
+
+# name = input('Enter file:')
+# handle = open(name)
+# counts = dict()
+# for line in handle:
+#     words = line.split()
+#     for word in words:
+#       counts[word] = counts.get(word, 0) + 1  
+# bigcount = None
+# bigword = None
+# for word,count in counts.items():
+#     if bigcount is None or count > bigcount:
+#         bigword = word
+#         bigcount = count
+# print(bigword, bigcount)
+
+
+
+import asyncio
+
+# An asynchronous generator function acts as an async iterable/iterator
+async def news_feed():
+    for i in range(1, 4):
+        await asyncio.sleep(1)  # Simulates a non-blocking I/O delay
+        yield f"News item {i}"
+
+async def main():
+    # Consuming the async iterable using async for
+    async for news in news_feed():
+        print(news)
+
+asyncio.run(main())
