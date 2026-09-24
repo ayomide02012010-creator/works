@@ -134,20 +134,43 @@
 #         bigword = word
 #         bigcount = count
 # print(bigword, bigcount)
+# # An asynchronous generator function acts as an async iterable/iterator
+# async def news_feed():
+#     for i in range(1, 4):
+#         await asyncio.sleep(1)  # Simulates a non-blocking I/O delay
+#         yield f"News item {i}"
+
+# async def main():
+#     # Consuming the async iterable using async for
+#     async for news in news_feed():
+#         print(news)
+
+# asyncio.run(main())
 
 
 
 import asyncio
+from codetiming import Timer
 
-# An asynchronous generator function acts as an async iterable/iterator
-async def news_feed():
-    for i in range(1, 4):
-        await asyncio.sleep(1)  # Simulates a non-blocking I/O delay
-        yield f"News item {i}"
+async def run_task(name, duration):
+    print(f'\tTask started: {name}')
+    timer = Timer(text=f"\tTask finished: '{name}' took {{:.1f}}")
+    timer.start()
+    
+    await asyncio.sleep(duration)
+    timer.stop()
+    return name
+
+TASK_LIST = [('Start laptop', 4), ('Make coffee', 3), ("open percel", 3)]
 
 async def main():
-    # Consuming the async iterable using async for
-    async for news in news_feed():
-        print(news)
-
-asyncio.run(main())
+    main_timer = Timer(text=f'\nTotal time: {{:.1f}}')
+    main_timer.start()
+    
+    await asyncio.gather(
+        run_task(*TASK_LIST[0]), run_task(*TASK_LIST[1]), run_task(*TASK_LIST[2])
+    )
+    main_timer.stop()
+    
+if __name__ == "__main__":
+    asyncio.run(main())
