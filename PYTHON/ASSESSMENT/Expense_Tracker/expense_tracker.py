@@ -1,6 +1,5 @@
-expenses = [
-
-]
+import json
+expenses = []
 
 def add_expense():
     try:
@@ -10,13 +9,13 @@ def add_expense():
         return
     
     category = input('Enter a Category: ').strip()
-    description = input('Enter a Discription: ').strip()
+    description = input('Enter a Description: ').strip()
     
     expense_dict = {
         "Amount" : amount,
         "Category" : category,
         "Description" : description
-    }
+    }    
     expenses.append(expense_dict)
     print('Successfully added!')
 
@@ -39,13 +38,16 @@ def view_expenses():
     print("=" * 7 + 'Your Expenses' + "=" * 7)
     idx = 0
     for expense in expenses:
-        print(f'{idx}.{expense}')
+        print(f"{idx}. Amount: ${expense['Amount']:.2f} | Category: {expense['Category']} | Description: {expense['Description']}")
         idx += 1
 
 def delete_expense():
     view_expenses()
     try:
         del_exp = int(input('Enter the number(index) of any expense to delete: '))
+        if del_exp < 0:
+            print('Invalid number')
+            return
         del expenses[del_exp] 
     except IndexError:
         print('Look again and choose a correct number(index)')
@@ -53,6 +55,25 @@ def delete_expense():
     except ValueError:
         print('Invalid input. Try again')
         return
+    print('Successfully Deleted')
+def save_expenses():
+    with open("store_expense.json", 'w') as f:
+        json.dump(expenses, f)
+def load_expenses():
+    try:
+        with open("store_expense.json", 'r') as f:
+            load_expense = json.load(f)
+            if isinstance(load_expense, list):
+                return load_expense
+            else:
+                return []
+    except FileNotFoundError:
+        print("File Doesn't exist yet")
+        return expenses
+    except json.JSONDecodeError:
+        print('File exists, but the JSON is invalid.')
+        return expenses
+        
     
 def show_menu():
     print("=" * 7 + 'EXPENSE TRACKER' + "=" * 7)
@@ -67,8 +88,10 @@ def show_menu():
     
     
 def main():
-    
+    global expenses
+    expenses = load_expenses()
     while True:
+
         user_choice = show_menu()
         
         if user_choice == '1':
@@ -80,20 +103,21 @@ def main():
             view_expenses()
         elif user_choice == '3':
             total = calculate_total()
-            print(f'Total Spending: {total}')
+            print(f'Total Spending: ${total:.2f}')
         elif user_choice == '4':
             spending_by_category = calculate_by_category()
             for key, value in spending_by_category.items():
-                print(key, value)
+                print(f"{key} --> ${value:.2f}")
         elif user_choice == '5':
             if not expenses:
-                print('NO expense added yet')
+                print('No expense added yet')
                 continue
             delete_expense()
         elif user_choice == '6':
+            save_expenses()
             print('👋Goodbye! Your expenses has been saved')
             break
         else:
-            print('Invalid choice. Please choose 1 to 6')
+            print('❌ Invalid choice. Please choose 1 to 6')
       
 main()

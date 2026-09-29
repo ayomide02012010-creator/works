@@ -83,13 +83,15 @@
 # while number <= 20:                                                          # weight_in_kilogram_or_pounds = input("Kg or lb: ")
 #     print(number * '*')                                                      
 #     number = number + 1                                                     # if weight_in_kilogram_or_pounds == "Kg":
-#                                                                             # conversion = weight_in_numbers * 2.2
-#                                                                             # conversion1 = str(conversion)
-#                                                                             # print("weight in pound: " + conversion1 +'lb')
-#                                                                             # elif weight_in_kilogram_or_pounds == "lb":
-#                                                                             # conversion = weight_in_numbers * 0.45
-#                                                                             # conversion1 = str(conversion)
-#                                                                             # print("weight in kilogram: " + conversion1 + 'kg')
+with open('workfile', encoding="utf-8") as f:
+    read_data = f.read()
+f.closed                                                                           # conversion = weight_in_numbers * 2.2
+                                                                            # conversion1 = str(conversion)
+                                                                            # print("weight in pound: " + conversion1 +'lb')
+                                                                            # elif weight_in_kilogram_or_pounds == "lb":
+                                                                            # conversion = weight_in_numbers * 0.45
+                                                                            # conversion1 = str(conversion)
+                                                                            # print("weight in kilogram: " + conversion1 + 'kg')
     
 
 # def my_sum(*args):
@@ -147,30 +149,28 @@
 
 # asyncio.run(main())
 
+# import asyncio
+# from codetiming import Timer
 
-
-import asyncio
-from codetiming import Timer
-
-async def run_task(name, duration):
-    print(f'\tTask started: {name}')
-    timer = Timer(text=f"\tTask finished: '{name}' took {{:.1f}}")
-    timer.start()
+# async def run_task(name, duration):
+#     print(f'\tTask started: {name}')
+#     timer = Timer(text=f"\tTask finished: '{name}' took {{:.1f}}")
+#     timer.start()
     
-    await asyncio.sleep(duration)
-    timer.stop()
-    return name
+#     await asyncio.sleep(duration)
+#     timer.stop()
+#     return name
 
-TASK_LIST = [('Start laptop', 4), ('Make coffee', 3), ("open percel", 3)]
+# TASK_LIST = [('Start laptop', 4), ('Make coffee', 3), ("open percel", 3)]
 
-async def main():
-    main_timer = Timer(text=f'\nTotal time: {{:.1f}}')
-    main_timer.start()
+# async def main():
+#     main_timer = Timer(text=f'\nTotal time: {{:.1f}}')
+#     main_timer.start()
     
-    await asyncio.gather(
-        run_task(*TASK_LIST[0]), run_task(*TASK_LIST[1]), run_task(*TASK_LIST[2])
-    )
-    main_timer.stop()
+#     await asyncio.gather(
+#         run_task(*TASK_LIST[0]), run_task(*TASK_LIST[1]), run_task(*TASK_LIST[2])
+#     )
+#     main_timer.stop()
     
-if __name__ == "__main__":
-    asyncio.run(main())
+# if __name__ == "__main__":
+#     asyncio.run(main())
