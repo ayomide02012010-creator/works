@@ -83,10 +83,10 @@
 # while number <= 20:                                                          # weight_in_kilogram_or_pounds = input("Kg or lb: ")
 #     print(number * '*')                                                      
 #     number = number + 1                                                     # if weight_in_kilogram_or_pounds == "Kg":
-with open('workfile', encoding="utf-8") as f:
-    read_data = f.read()
-f.closed                                                                           # conversion = weight_in_numbers * 2.2
-                                                                            # conversion1 = str(conversion)
+# with open('workfile', encoding="utf-8") as f:
+#     read_data = f.read()
+# f.closed                                                                           # conversion = weight_in_numbers * 2.2
+#                                                                             # conversion1 = str(conversion)
                                                                             # print("weight in pound: " + conversion1 +'lb')
                                                                             # elif weight_in_kilogram_or_pounds == "lb":
                                                                             # conversion = weight_in_numbers * 0.45
@@ -161,7 +161,7 @@ f.closed                                                                        
 #     timer.stop()
 #     return name
 
-# TASK_LIST = [('Start laptop', 4), ('Make coffee', 3), ("open percel", 3)]
+# TASK_LIST = [('Start laptop', 10), ('Make coffee', 3), ("open percel", 3)]
 
 # async def main():
 #     main_timer = Timer(text=f'\nTotal time: {{:.1f}}')
@@ -174,3 +174,45 @@ f.closed                                                                        
     
 # if __name__ == "__main__":
 #     asyncio.run(main())
+
+# # import asyncio
+# async def async_numbers():
+#     for i in range(1, 11):
+#         await asyncio.sleep(2) # Simulate an async taskif __name__ == "__main__":
+#         yield i
+
+# async def main():
+#     async for number in aiter(async_numbers()):
+#         print(number)
+
+# asyncio.run(main())
+
+# import asyncio
+
+# # asynchronous generator function
+# async def news_feed():
+#     for i in range(1, 4):
+#         await asyncio.sleep(1)  # Simulate API delay
+#         yield f"News {i}"
+
+# # main function
+# async def main():
+#     async for news in aiter(news_feed()):
+#         print(news)
+
+# asyncio.run(main()) # calling main function
+# import asyncio
+
+# # asynchronous generator function
+# async def websocket_mock():
+#     messages = ["Hi!", "How are you?", "Bye!"]
+#     for msg in messages:
+#         await asyncio.sleep(1)
+#         yield msg
+
+# # main function
+# async def main():
+#     async for message in aiter(websocket_mock()):
+#         print(f"Message: {message}")
+
+# asyncio.run(main()) # calling main function

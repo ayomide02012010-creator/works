@@ -1,7 +1,7 @@
 import random
-import time
+import time, asyncio
 
-def flip_coin():
+async def flip_coin():
   user_input = input("Choose Heads or Tails: ").lower().strip()
   
   while user_input != "heads" and user_input != "tails":
@@ -12,7 +12,7 @@ def flip_coin():
   
   print("Tossing the coin...")
   time.sleep(2)
-  
+  await asyncio.sleep(2)
   if user_input == machine_output:
     result = "won"
   else:
