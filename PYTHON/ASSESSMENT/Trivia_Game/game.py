@@ -27,7 +27,16 @@ questions = [
 ]
 
 for each_question in questions:
+    idx=0 
     print(each_question["question"],"\n")
     for each_options in each_question["options"]:
-        print(enumerate(each_options))
+        idx+=1
+        print(f"{idx}. {each_options}")  
+    chosen_option = int(input("Your answer: "))
+    answer = list(each_question["options"]).index(each_question["answer"])
+    if chosen_option == answer+1:
+        print("Correct! 🎉")
+    else:
+        print("Wrong! ❌")
     print()
+    

@@ -216,3 +216,17 @@
 #         print(f"Message: {message}")
 
 # asyncio.run(main()) # calling main function
+
+
+rgb = ["Red", "Green", "Blue"]
+rgba = rgb
+print(id(rgb) == id(rgba))  # they reference the same object
+
+rgba.append("Alph")
+print(rgb)
+correct_rgba = rgba
+print(correct_rgba)
+correct_rgba[-1] = "Alpha"
+print(correct_rgba)
+
+print(rgba)
