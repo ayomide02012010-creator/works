@@ -25,7 +25,7 @@ questions = [
         "answer": "12"
     }
 ]
-
+score = 0
 for each_question in questions:
     idx=0 
     print(each_question["question"],"\n")
@@ -35,8 +35,9 @@ for each_question in questions:
     chosen_option = int(input("Your answer: "))
     answer = list(each_question["options"]).index(each_question["answer"])
     if chosen_option == answer+1:
+        score += 1
         print("Correct! 🎉")
     else:
         print("Wrong! ❌")
     print()
-    
+print(f'Quiz finished!\nYour score: {score}/5')
