@@ -91,7 +91,6 @@ def main():
     global expenses
     expenses = load_expenses()
     while True:
-
         user_choice = show_menu()
         
         if user_choice == '1':
