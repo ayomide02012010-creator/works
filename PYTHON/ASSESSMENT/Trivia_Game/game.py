@@ -81,17 +81,11 @@ questions = [
 score = 0
 no_of_question = 0
 random.shuffle(questions)
-def display_questions(questions):
-    for each_question in questions:
-        idx=0 
-        print(each_question["question"],"\n")
-        for each_options in each_question["options"]:
-            idx+=1
-            print(f"{idx}. {each_options}")
-    for each_question in questions:
-        return each_question
+def display_questions(each_question):
+    for each_options in each_question["options"]:
+        idx+=1
+        print(f"{idx}. {each_options}")
 def get_answer(each_question):
-    each_question = display_questions()
     while True:
         try:
             chosen_option = int(input("Your answer: "))
@@ -104,9 +98,6 @@ def get_answer(each_question):
         except ValueError:
             print("❌ Write a valid number")
 def validate_answer(each_question, user_answer):
-    global score, no_of_question
-    user_answer = get_answer()
-    each_question = display_questions()
     no_of_question += 1   
     answer = each_question["options"].index(each_question["answer"]) + 1
     if user_answer == answer:
@@ -114,13 +105,14 @@ def validate_answer(each_question, user_answer):
         print("Correct! 🎉")
     else:
         print("Wrong! ❌")
-    if len(questions) == no_of_question:
-        print()
-        print(f'Quiz finished!\nYour score: {score}/{no_of_question}')
         
 def main():
-    each_question = display_questions(questions)
-    user_answer = get_answer(each_question)
-    validate_answer(each_question, user_answer)
+    global score, no_of_question, questions
+    for each_question in questions:
+        display_questions(each_question)
+        user_answer = get_answer(each_question)
+        validate_answer(each_question, user_answer)
+    if len(questions) == no_of_question:
+        print(f'Quiz finished!\nYour score: {score}/{no_of_question}')
     
 main()
