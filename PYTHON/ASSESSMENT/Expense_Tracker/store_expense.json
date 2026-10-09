@@ -1,1 +1,32 @@
-[{"Amount": 2.0, "Category": "e", "Description": "r"}, {"Amount": 2.0, "Category": "", "Description": ""}, {"Amount": 2.0, "Category": "", "Description": ""}, {"Amount": 2.0, "Category": "", "Description": ""}]
+[
+    {
+        "Amount": 2000.0,
+        "Category": "Food",
+        "Description": "Dinner"
+    },
+    {
+        "Amount": 2300.0,
+        "Category": "Football",
+        "Description": "Sport"
+    },
+    {
+        "Amount": 300.0,
+        "Category": "Food",
+        "Description": "Dinner"
+    },
+    {
+        "Amount": 120.0,
+        "Category": "goo22",
+        "Description": "1222"
+    },
+    {
+        "Amount": 2.0,
+        "Category": "2",
+        "Description": "ffo4fgth\\"
+    },
+    {
+        "Amount": 4.0,
+        "Category": "food",
+        "Description": "dinner"
+    }
+]
