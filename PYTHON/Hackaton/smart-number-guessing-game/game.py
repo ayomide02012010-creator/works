@@ -40,9 +40,10 @@ def choose_difficulty():
         print("Please choose 1, 2, or 3")
     except ValueError:
       print("Please choose 1, 2, or 3")
-def show_summary(result, attempts_used, attempts_remaining, score):
+def show_summary(result, max_attempt, attempts_used, attempts_remaining, score):
   print("=" * 8 + 'GAME SUMMARY' + '=' * 8)
   print(f"Result: {result}")
+  print(f"Total Attempt: {max_attempt}")
   print(f"Attempts used: {attempts_used}")
   print(f"Attempts remaining: {attempts_remaining}")
   print(f"Score: {score}")
@@ -76,7 +77,7 @@ def play_game():
       result = 'Lost'
       print(f'Game Over!\nThe number was {secret_num}.\nYour Score = {score}\n')
       break
-  show_summary(result, attempts_used, attempts_remaining, score)
+  show_summary(result, max_attempts, attempts_used, attempts_remaining, score)
   return result, attempts_used, attempts_remaining, score
 while True:
   result, attempts_used, attempts_remaining, score = play_game()

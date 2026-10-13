@@ -27,15 +27,27 @@ questions = [
     }
 
 ]
-score = 0
-no_of_question = 0
-random.shuffle(questions)
+def select_question():
+    while True:
+        try:
+            user_choice = int(input("Enter the number of questions You want to answer: "))
+            if user_choice <= 0 or user_choice > len(questions):
+                print("❌ Invalid Choice: Enter correct Number")
+                continue
+            else:
+                break
+        except ValueError:
+            print("❌ Invalid Input")
+    random.shuffle(questions)
+    questions_to_be_answered = questions[:user_choice]
+    return questions_to_be_answered
 def display_questions(each_question):
     idx=0
     for each_options in each_question["options"]:
         idx+=1
         print(f"{idx}. {each_options}")
     print()
+    
 def get_answer(each_question):
     while True:
         try:
@@ -47,7 +59,8 @@ def get_answer(each_question):
                 return chosen_option
             
         except ValueError:
-            print("❌ Write a valid number")
+            print("❌ Enter a valid number")
+            
 def validate_answer(each_question, user_answer):
     answer = each_question["options"].index(each_question["answer"]) + 1
     if user_answer == answer:
@@ -55,31 +68,34 @@ def validate_answer(each_question, user_answer):
         return True
     else:
         print("Wrong! ❌")
-        print(f'The answer was "{each_question['answer']}"\n')
+        print(f'The answer was "{each_question["answer"]}"\n')
         return False
 def main():
-    global score, no_of_question
-    for each_question in questions:
-        
-        print(f'Question {no_of_question+1}/{len(questions)}')
-        
-        print(each_question["question"],"\n")
-        
-        random.shuffle(each_question["options"])
-        
-        display_questions(each_question)
-        
-        user_answer = get_answer(each_question)
-        
-        user = validate_answer(each_question, user_answer)
-        
-        no_of_question += 1
-        
-        if user:
-            score +=1
-            
-    print(f'Quiz finished!\nYour score: {score}/{no_of_question}')
-    
+    while True:
+        score = 0
+        no_of_question = 0
+        print("Welcome to Trivia Quiz Game\n")
+        user_quest = select_question()
+        for each_question in user_quest:
+            print(f'Question {no_of_question+1}/{len(user_quest)}')
+            print(each_question["question"],"\n")
+            random.shuffle(each_question["options"])
+            display_questions(each_question)
+            user_answer = get_answer(each_question)
+            user = validate_answer(each_question, user_answer)
+            no_of_question += 1
+            if user:
+                score +=1
+        print(f'Quiz finished!\nYour score: {score}/{no_of_question}')
+        replay_or_not = input("Would you like to play again? (yes,y or no/n): ").lower().strip()
+        while replay_or_not not in ["yes","y"] and replay_or_not not in ["no","n"]:
+            print("❌ Invalid Input")
+            replay_or_not = input("Would you like to play again? (yes,y or no/n): ").lower().strip()
+        if replay_or_not in ["yes","y"]:
+            continue
+        elif replay_or_not in ["no","n"]:
+            print(f'Thanks for playing. Quiz finished')
+            break
 main()
 
 
