@@ -30,7 +30,7 @@ questions = [
 def select_question():
     while True:
         try:
-            user_choice = int(input("Enter the number of questions You want to answer: "))
+            user_choice = int(input("Enter the number of questions You want to answer:\n> "))
             if user_choice <= 0 or user_choice > len(questions):
                 print("❌ Invalid Choice: Enter correct Number")
                 continue
@@ -70,7 +70,19 @@ def validate_answer(each_question, user_answer):
         print("Wrong! ❌")
         print(f'The answer was "{each_question["answer"]}"\n')
         return False
+def load_high_score():
+    try:
+        with open("highscore.txt", 'r') as f:
+            return int(f.read())
+    except FileNotFoundError:
+        return 0
+    except ValueError:
+        return 0
+def save_high_score(highest_score):
+    with open("highscore.txt","w") as f:
+        f.write(str(highest_score))
 def main():
+    highest_score = load_high_score()
     while True:
         score = 0
         no_of_question = 0
@@ -86,15 +98,22 @@ def main():
             no_of_question += 1
             if user:
                 score +=1
-        print(f'Quiz finished!\nYour score: {score}/{no_of_question}')
+        if score > highest_score:
+            highest_score = score
+        save_high_score(highest_score)
+        print(f'Quiz finished!\nYour score: {score}/{no_of_question} ({score/no_of_question*100:.0f}%)\nHighest Score: {highest_score}\n')
+        
         replay_or_not = input("Would you like to play again? (yes,y or no/n): ").lower().strip()
+        
         while replay_or_not not in ["yes","y"] and replay_or_not not in ["no","n"]:
             print("❌ Invalid Input")
             replay_or_not = input("Would you like to play again? (yes,y or no/n): ").lower().strip()
+        
         if replay_or_not in ["yes","y"]:
+            print()
             continue
         elif replay_or_not in ["no","n"]:
-            print(f'Thanks for playing. Quiz finished')
+            print(f'\nThanks for playing.\nYour highest score was: {highest_score}')
             break
 main()
 

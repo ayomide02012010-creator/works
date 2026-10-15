@@ -92,7 +92,6 @@ def load_expenses():
             else:
                 return []
     except FileNotFoundError:
-        print("File Doesn't exist yet")
         return expenses
     except json.JSONDecodeError:
         print('File exists, but the JSON is invalid.')

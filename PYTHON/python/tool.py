@@ -1,18 +1,19 @@
 import random
-import time, asyncio
-
-async def flip_coin():
+import time 
+"""asyncio"""
+'''async''' 
+def flip_coin():
   user_input = input("Choose Heads or Tails: ").lower().strip()
   
   while user_input != "heads" and user_input != "tails":
     print("Invalid choice. Please choose Heads or Tails.")
     user_input = input("Choose Heads or Tails: ").lower().strip()  
   
-  machine_output = random.choice(["Heads", "Tails"]).lower()
+  machine_output = random.choice(["Heads","Tails"]).lower()
   
-  print("Tossing the coin...")
+  print("\nTossing the coin...")
   time.sleep(2)
-  await asyncio.sleep(2)
+  # await asyncio.sleep(2)
   if user_input == machine_output:
     result = "won"
   else:
@@ -45,7 +46,7 @@ def check_statistics(wins, losses, rounds):
 def show_summary(wins, losses, rounds):
   check_stat = check_statistics(wins, losses, rounds)
   if check_stat:
-    print("Statistics are correct!\n")
+    print("\nStatistics are correct!\n")
   else:
     print("Something is wrong with the statistics!")
 

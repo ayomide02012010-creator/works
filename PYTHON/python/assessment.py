@@ -31,15 +31,16 @@ while True:
   
   show_summary(wins, losses, rounds)
   
-  another_try = input("Play again? ").lower().strip()
+  another_try = input("\nPlay again? ").lower().strip()
   while another_try not in ['y', 'yes'] and another_try not in ['n','no']:
     print('Please enter yes or no.')
     another_try = input('Play again? ').lower().strip()
   if another_try in ['y', 'yes']:
+    print()
     continue
   elif another_try in ['n', 'no']:
     print(f"\nThanks for playing!\nFinal score:{score}")
-    print('=' * 8 + 'HISTORY' + '=' * 8)
+    print('\n' + '=' * 8 + 'HISTORY' + '=' * 8)
     for record in history:
       print(record)
     break
