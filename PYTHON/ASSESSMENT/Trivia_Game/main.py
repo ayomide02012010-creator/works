@@ -1,37 +1,4 @@
 import random, json
-questions = [
-    {
-        "question": "What is 2 + 2?",
-        "options": ["3", "4", "5", "6"],
-        "answer": "4" 
-    },
-    {
-        "question": "____ is the perfect first programming language",
-        "options": ["JavaScript","Java",".net","python"],
-        "answer": "python"
-    },
-    {
-        "question": "What is the primary function of the CPU in a computer?",
-        "options": ["To connect to the internet","To display images on the screen","To perform arithmetic and logical operations on data","To store data permanently"],
-        "answer": "To perform arithmetic and logical operations on data"
-    },
-    {
-        "question": "What is one common challenge beginners face when learning Python?",
-        "options": ["Understanding indentation and its role in Python syntax","Writing code without using any variables","Configuring Python to run on a quantum computer","Memorizing all Python libraries"],
-        "answer": "Understanding indentation and its role in Python syntax" 
-    },
-    {
-        "question": "2+10=?", 
-        "options": ["12","13","34","3"],
-        "answer": "12"
-    },
-    {
-        "question": "_____ allow us to build that can make decisions based on some conditions", 
-        "options": ["while statement","iteration statement","conditional statement","if statement"],
-        "answer": "conditional statement"
-    }
-
-]
 def select_question():
     while True:
         try:
@@ -97,7 +64,6 @@ def load_high_score():
         return {}
 def save_high_score(high_scores):
     with open("highscore.json","w") as f:
-        # high_scores = {"5": score,"10": score ,"15": score, "20": score, "25": score, "30": score}
         json.dump(high_scores, f, indent=4)
 def main():
     highest_score = load_high_score()
@@ -140,4 +106,3 @@ def main():
             print(f'\nThanks for playing.\nYour highest score was: {highest_score[str(user_quest)]}')
             break
 main()
- 
