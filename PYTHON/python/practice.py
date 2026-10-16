@@ -216,3 +216,11 @@
 #         print(f"Message: {message}")
 
 # asyncio.run(main()) # calling main function
+# ============================================Basic Sting Method=======================================================
+# Course = 'Asynchronous Programming'
+
+# Course.upper()
+# Course.lower()
+# Course.title()
+# Course.find()
+# Course.replace()

@@ -13,7 +13,7 @@ def flip_coin():
   
   print("\nTossing the coin...")
   time.sleep(2)
-  # await asyncio.sleep(2)
+  
   if user_input == machine_output:
     result = "won"
   else:
