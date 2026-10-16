@@ -28,7 +28,91 @@
         "question": "_____ allow us to build that can make decisions based on some conditions", 
         "options": ["while statement","iteration statement","conditional statement","if statement"],
         "answer": "conditional statement"
+    },
+    {
+        "question": "Which keyword defines a function in Python?",
+        "options": ["func", "define", "def", "function"],
+        "answer": "def"
+    },
+    {
+        "question": "Which symbol starts a single-line comment in Python?",
+        "options": ["//", "#", "**", "<!--"],
+        "answer": "#"
+    },
+    {
+        "question": "What is the correct way to display Hello World in Python?",
+        "options": ["echo('Hello World')", "print('Hello World')", "display('Hello World')", "show('Hello World')"],
+        "answer": "print('Hello World')"
+    },{
+        "question": "Which symbol is used to write a single-line comment in Python?",
+        "options": ["//", "<!--", "#", "**"],
+        "answer": "#"
+    },{
+        "question": "What is the data type of the value 10?",
+        "options": ["str", "float", "bool", "int"],
+        "answer": "int"
+    },{
+        "question": "What will this code print?\n```py\nx = 5\nx = x + 2\nprint(x)",
+        "options": ["5", "2", "7", "x + 2"],
+        "answer": "7"
+    },{
+        "question": "Which Python keyword is used to define a function?",
+        "options": ["func", "define", "def", "function"],
+        "answer": "def"
+    },{
+        "question": "",
+        "options": ["", "", "", ""],
+        "answer": ""
+    },{
+        "question": "",
+        "options": ["", "", "", ""],
+        "answer": ""
+    },{
+        "question": "",
+        "options": ["", "", "", ""],
+        "answer": ""
+    },{
+        "question": "",
+        "options": ["", "", "", ""],
+        "answer": ""
+    },{
+        "question": "",
+        "options": ["", "", "", ""],
+        "answer": ""
+    },{
+        "question": "",
+        "options": ["", "", "", ""],
+        "answer": ""
+    },{
+        "question": "",
+        "options": ["", "", "", ""],
+        "answer": ""
+    },{
+        "question": "",
+        "options": ["", "", "", ""],
+        "answer": ""
+    },{
+        "question": "",
+        "options": ["", "", "", ""],
+        "answer": ""
+    },{
+        "question": "",
+        "options": ["", "", "", ""],
+        "answer": ""
+    },{
+        "question": "",
+        "options": ["", "", "", ""],
+        "answer": ""
+    },{
+        "question": "",
+        "options": ["", "", "", ""],
+        "answer": ""
+    },{
+        "question": "",
+        "options": ["", "", "", ""],
+        "answer": ""
     }
+
 
 ]
 
