@@ -1,30 +1,37 @@
 import random, json
-def select_question():
+def select_question(questions):
     while True:
-        try:
-            user_choice = input("Select the number of questions You want to answer:\n> (a) 5 (b) 10 (c) 15 (d) 20 (e) 25 (f) 30 (g) Any\n>  ").lower().strip()
-            if user_choice not in ["a","b","c","d","e","f","g"]:
-                print("❌ Invalid Choice: Enter correct option\n")
-                continue
+        
+        user_choice = input("Select the number of questions You want to answer:\n> (a) 5 (b) 10 (c) 15 (d) 20 (e) 25 (f) 30 (g) Any\n>  ").lower().strip()
+        if user_choice not in ["a","b","c","d","e","f","g"]:
+            print("❌ Invalid Choice: Enter correct option\n")
+            continue
+        else:
+            if user_choice == "a":
+                return 5  
+            elif user_choice == "b":
+                return 10
+            elif user_choice == "c":
+                return 15
+            elif user_choice == "d":
+                return 20
+            elif user_choice == "e":
+                return 25
+            elif user_choice == "f":
+                return 30
             else:
-                if user_choice == "a":
-                    return 5  
-                elif user_choice == "b":
-                    return 10
-                elif user_choice == "c":
-                    return 15
-                elif user_choice == "d":
-                    return 20
-                elif user_choice == "e":
-                    return 25
-                elif user_choice == "f":
-                    return 30
-                else:
-                    any_choice = int(input("Enter the number of question you want to answer: "))
-                    return any_choice
-        except ValueError:
-            print("❌ Invalid Input")
-            
+                while True:
+                    try:
+                        any_choice = int(input("Enter the number of question you want to answer: "))
+                        if any_choice < 1 or any_choice > len(questions):
+                            print("❌ Invalid number of question")
+                            continue
+                        else:
+                            break
+                    except ValueError:
+                        print("❌ Invalid Input: you Enterd Letters instead of Numbers")
+                return any_choice
+        
 def display_option(each_question):
     idx=0
     for each_options in each_question["options"]:
@@ -52,7 +59,7 @@ def validate_answer(each_question, user_answer):
         return True
     else:
         print("Wrong! ❌")
-        print(f'The answer was "{each_question["answer"]}"\n')
+        print(f'The answer was: {each_question["answer"]}\n')
         return False
 def load_high_score():
     try:
@@ -65,15 +72,19 @@ def load_high_score():
 def save_high_score(high_scores):
     with open("highscore.json","w") as f:
         json.dump(high_scores, f, indent=4)
+        
+def load_quest():
+    with open("questions/python.json", encoding="utf-8") as file:
+        return json.load(file)
 def main():
+    questions = load_quest()
     highest_score = load_high_score()
     while True:
         score = 0
         no_of_question = 0
         print("Welcome to Trivia Quiz Game\n")
-        user_quest = select_question()
-        random.shuffle(questions)
-        questions_to_be_answered = questions[:user_quest]
+        user_quest = select_question(questions)
+        questions_to_be_answered = random.sample(questions, user_quest)
         for each_question in questions_to_be_answered:
             print(f'Question {no_of_question+1}/{user_quest}')
             print(each_question["question"],"\n")
@@ -103,6 +114,6 @@ def main():
             print()
             continue
         elif replay_or_not in ["no","n"]:
-            print(f'\nThanks for playing.\nYour highest score was: {highest_score[str(user_quest)]}')
+            print(f'\nThanks for playing.\nThe highest score for {user_quest} Question is: {highest_score[str(user_quest)]}')
             break
 main()

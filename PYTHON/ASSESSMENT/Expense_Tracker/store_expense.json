@@ -15,18 +15,13 @@
         "Description": "Dinner"
     },
     {
-        "Amount": 120.0,
-        "Category": "goo22",
-        "Description": "1222"
-    },
-    {
-        "Amount": 2.0,
-        "Category": "2",
-        "Description": "ffo4fgth\\"
-    },
-    {
         "Amount": 4.0,
         "Category": "food",
         "Description": "dinner"
+    },
+    {
+        "Amount": 40000.0,
+        "Category": "food",
+        "Description": "breakfast"
     }
 ]

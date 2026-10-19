@@ -43,77 +43,257 @@
         "question": "What is the correct way to display Hello World in Python?",
         "options": ["echo('Hello World')", "print('Hello World')", "display('Hello World')", "show('Hello World')"],
         "answer": "print('Hello World')"
-    },{
+    },
+    {
         "question": "Which symbol is used to write a single-line comment in Python?",
         "options": ["//", "<!--", "#", "**"],
         "answer": "#"
-    },{
+    },
+    {
         "question": "What is the data type of the value 10?",
         "options": ["str", "float", "bool", "int"],
         "answer": "int"
-    },{
+    },
+    {
         "question": "What will this code print?\n```py\nx = 5\nx = x + 2\nprint(x)",
         "options": ["5", "2", "7", "x + 2"],
         "answer": "7"
-    },{
+    },
+    {
         "question": "Which Python keyword is used to define a function?",
         "options": ["func", "define", "def", "function"],
         "answer": "def"
-    },{
-        "question": "",
-        "options": ["", "", "", ""],
-        "answer": ""
-    },{
-        "question": "",
-        "options": ["", "", "", ""],
-        "answer": ""
-    },{
-        "question": "",
-        "options": ["", "", "", ""],
-        "answer": ""
-    },{
-        "question": "",
-        "options": ["", "", "", ""],
-        "answer": ""
-    },{
-        "question": "",
-        "options": ["", "", "", ""],
-        "answer": ""
-    },{
-        "question": "",
-        "options": ["", "", "", ""],
-        "answer": ""
-    },{
-        "question": "",
-        "options": ["", "", "", ""],
-        "answer": ""
-    },{
-        "question": "",
-        "options": ["", "", "", ""],
-        "answer": ""
-    },{
-        "question": "",
-        "options": ["", "", "", ""],
-        "answer": ""
-    },{
-        "question": "",
-        "options": ["", "", "", ""],
-        "answer": ""
-    },{
-        "question": "",
-        "options": ["", "", "", ""],
-        "answer": ""
-    },{
-        "question": "",
-        "options": ["", "", "", ""],
-        "answer": ""
-    },{
-        "question": "",
-        "options": ["", "", "", ""],
-        "answer": ""
+    },
+    {
+        "question": "What will this code print?\nprint(3 == 3.0)",
+        "options": ["False", "True", "3.0", "TypeError"],
+        "answer": "True"
+    },
+    {
+        "question": "What will this code print?\nprint(bool(\"False\"))",
+        "options": ["False", "True", "\"False\"", "ValueError"],
+        "answer": "True"
+    },
+    {
+        "question": "What will this code print?\na = [1, 2]\nb = a\nb.append(3)\nprint(a)",
+        "options": ["[1, 2]", "[1, 2, 3]", "[3]", "NameError"],
+        "answer": "[1, 2, 3]"
+    },
+    {
+        "question": "What will this code print?\nprint(10 / 2)",
+        "options": ["5", "5.0", "2.0", "TypeError"],
+        "answer": "5.0"
+    },
+    {
+        "question": "What will this code print?\nprint(10 // 3)",
+        "options": ["3.33", "3", "4", "3.0"],
+        "answer": "3"
+    },
+    {
+        "question": "What will this code print?\nprint(-7 // 2)",
+        "options": ["-3", "-3.5", "-4", "3"],
+        "answer": "-4"
+    },
+    {
+        "question": "What will this code print?\nprint(2 ** 3 ** 2)",
+        "options": ["64", "512", "36", "256"],
+        "answer": "512"
+    },
+    {
+        "question": "What will this code print?\nprint(\"5\" * 2)",
+        "options": ["10", "\"55\"", "\"52\"", "TypeError"],
+        "answer": "\"55\""
+    },
+    {
+        "question": "What will this code print?\nprint(5 * \"2\")",
+        "options": ["10", "\"22222\"", "\"52\"", "TypeError"],
+        "answer": "\"22222\""
+    },
+    {
+        "question": "What will this code print?\nprint([10, 20, 30][-1])",
+        "options": ["10", "20", "30", "IndexError"],
+        "answer": "30"
+    },
+    {
+        "question": "What will this code print?\nprint([10, 20, 30, 40][1:3])",
+        "options": ["[10, 20, 30]", "[20, 30]", "[20, 30, 40]", "[10, 20]"],
+        "answer": "[20, 30]"
+    },
+    {
+        "question": "What will this code print?\nprint(list(range(1, 6, 2)))",
+        "options": ["[1, 3, 5]", "[1, 3]", "[1, 2, 3, 4, 5]", "[2, 4, 6]"],
+        "answer": "[1, 3, 5]"
+    },
+    {
+        "question": "What will this code print?\nif []:\n    print(\"Yes\")\nelse:\n    print(\"No\")",
+        "options": ["Yes", "No", "[]", "TypeError"],
+        "answer": "No"
+    },
+    {
+        "question": "What will this code print?\nprint(0 or 5)",
+        "options": ["True", "False", "0", "5"],
+        "answer": "5"
+    },
+    {
+        "question": "What will this code print?\nprint(not 3 > 2)",
+        "options": ["True", "False", "3", "SyntaxError"],
+        "answer": "False"
+    },
+    {
+        "question": "What will this code print?\nnumbers = [3, 1, 2]\nresult = numbers.sort()\nprint(result)",
+        "options": ["[1, 2, 3]", "[3, 1, 2]", "None", "False"],
+        "answer": "None"
+    },
+    {
+        "question": "What will this code print?\nnumbers = [1, 2]\nnumbers.extend([3, 4])\nprint(numbers)",
+        "options": ["[1, 2, [3, 4]]", "[1, 2, 3, 4]", "[3, 4]", "[1, 2]"],
+        "answer": "[1, 2, 3, 4]"
+    },
+    {
+        "question": "What will this code print?\nstudent = {\"name\": \"Ali\"}\nprint(student.get(\"age\"))",
+        "options": ["0", "False", "None", "KeyError"],
+        "answer": "None"
+    },
+    {
+        "question": "What will this code print?\nprint(type(5.0).__name__)",
+        "options": ["int", "float", "str", "number"],
+        "answer": "float"
+    },
+    {
+        "question": "What will this code print?\ndef greet():\n    print(\"Hello\")\n\nresult = greet()\nprint(result)",
+        "options": ["Hello followed by None", "Hello followed by 0", "Hello only", "TypeError"],
+        "answer": "Hello followed by None"
+    },
+    {
+        "question": "What will this code print?\nx = 10\n\ndef change():\n    x = 5\n    print(x)\n\nchange()\nprint(x)",
+        "options": ["5 followed by 5", "10 followed by 5", "5 followed by 10", "NameError"],
+        "answer": "5 followed by 10"
+    },
+    {
+        "question": "What will this code print?\nfor i in range(3):\n    print(i)\nelse:\n    print(\"Done\")",
+        "options": ["0, 1, 2", "0, 1, 2, Done", "1, 2, 3, Done", "Done only"],
+        "answer": "0, 1, 2, Done"
+    },
+    {
+        "question": "Which statement about tuples is correct?",
+        "options": [
+            "A tuple can never contain a list",
+            "A tuple's individual elements cannot be reassigned",
+            "A tuple automatically sorts its elements",
+            "A tuple is always made of numbers"
+        ],
+        "answer": "A tuple's individual elements cannot be reassigned"
+    },
+    {
+        "question": "What will this code print?\ndata = {\"x\": 1, \"x\": 2}\nprint(data[\"x\"])",
+        "options": ["1", "2", "1 and 2", "KeyError"],
+        "answer": "2"
+    },
+    {
+        "question": "What will this code print?\nword = \"PYTHON\"\nword.lower()\nprint(word)",
+        "options": ["python", "PYTHON", "Python", "AttributeError"],
+        "answer": "PYTHON"
+    },
+    {
+        "question": "What will this code print?\na = [1, 2]\nb = [1, 2]\nprint(a == b)",
+        "options": ["True", "False", "None", "TypeError"],
+        "answer": "True"
+    },
+    {
+        "question": "What will this code print?\na = [1, 2]\nb = [1, 2]\nprint(a is b)",
+        "options": ["True", "False", "[1, 2]", "TypeError"],
+        "answer": "False"
+    },
+    {
+        "question": "What will this code print?\nprint(0.1 + 0.2 == 0.3)",
+        "options": ["True", "False", "0.3", "SyntaxError"],
+        "answer": "False"
+    },
+    {
+        "question": "What will this code print?\nx = 5\nprint(x > 3 and x < 10)",
+        "options": ["True", "False", "5", "TypeError"],
+        "answer": "True"
+    },
+    {
+        "question": "What will this code print?\nprint(bool([]), bool([0]))",
+        "options": [
+            "True True",
+            "False False",
+            "False True",
+            "True False"
+        ],
+        "answer": "False True"
+    },
+    {
+        "question": "A developer writes a function to collect values. Calling collect(1), collect(2), and collect(3) produces [1], [1, 2], and [1, 2, 3]. What is the underlying cause?\n\ndef collect(value, items=[]):\n    items.append(value)\n    return items",
+        "options": [
+            "Python automatically combines lists returned by previous function calls",
+            "The default list is created once when the function is defined and reused across calls",
+            "The append() method always modifies every list in the program",
+            "Python treats all function parameters as global variables"
+        ],
+        "answer": "The default list is created once when the function is defined and reused across calls"
+    },
+    {
+        "question": "Which call is valid for this function definition?\n\ndef calculate(a, /, b, *, c):\n    return a + b + c",
+        "options": [
+            "calculate(a=1, b=2, c=3)",
+            "calculate(1, 2, 3)",
+            "calculate(1, 2, c=3)",
+            "calculate(1, b=2, 3)"
+        ],
+        "answer": "calculate(1, 2, c=3)"
+    },
+    {
+        "question": "A dictionary is created as follows:\n\ndata = {True: \"first\", 1: \"second\", 1.0: \"third\"}\n\nHow many entries does the dictionary contain, and what does data[True] return?",
+        "options": [
+            "Three entries; \"first\"",
+            "Two entries; \"second\"",
+            "One entry; \"third\"",
+            "Three entries; \"third\""
+        ],
+        "answer": "One entry; \"third\""
+    },
+    {
+        "question": "A generator has been completely consumed by list(generator). What happens if the same generator object is passed to list() again, assuming it has not been reset or replaced?",
+        "options": [
+            "It produces the same values again automatically",
+            "It raises StopIteration immediately",
+            "It returns an empty list",
+            "It creates a fresh generator from the original function"
+        ],
+        "answer": "It returns an empty list"
+    },
+    {
+        "question": "Consider this function:\n\ndef decide():\n    try:\n        return \"A\"\n    finally:\n        return \"B\"\n\nWhich value does decide() return?",
+        "options": [
+            "\"A\", because return in try always takes priority",
+            "\"B\", because the return in finally overrides the pending return",
+            "None, because finally cancels return statements",
+            "An exception, because a function cannot return from both blocks"
+        ],
+        "answer": "\"B\", because the return in finally overrides the pending return"
+    },
+    {
+        "question": "A developer wants three functions that return 0, 1, and 2 respectively. Which approach correctly avoids the loop-variable late-binding problem?\n\nfunctions = []\nfor i in range(3):\n    functions.append(WHAT_GOES_HERE)",
+        "options": [
+            "lambda: i",
+            "lambda i=i: i",
+            "lambda: functions[i]",
+            "lambda i: i"
+        ],
+        "answer": "lambda i=i: i"
+    },
+    {
+        "question": "A developer copies a nested list and modifies an inner list through the copy:\n\noriginal = [[1], [2]]\ncopied = original.copy()\ncopied[0].append(9)\n\nWhich statement best describes the relationship between original and copied?",
+        "options": [
+            "Both outer and inner lists are independent, so original remains unchanged",
+            "The outer lists are distinct, but their inner lists are shared, so original[0] becomes [1, 9]",
+            "The copy operation creates a deep copy, but append() changes both lists by coincidence",
+            "The operation raises TypeError because nested lists cannot be copied"
+        ],
+        "answer": "The outer lists are distinct, but their inner lists are shared, so original[0] becomes [1, 9]"
     }
-
-
 ]
 
  

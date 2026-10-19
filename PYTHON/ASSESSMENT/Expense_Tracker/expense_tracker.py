@@ -4,14 +4,11 @@ expenses = []
 def add_expense():
     while True:
         try:
-            amount = float(input('Enter an Amount: '))
-            if amount < 1:
-                print("❌ Invalid Amount. Please enter a Valid number")
-                continue
-            else:
-                break
+            amount = abs(float(input('Enter an Amount: ')))
         except ValueError:
-            print('❌ Invalid Amount. Please enter a number')  
+            print('❌ Invalid Amount. Please enter a number')
+            continue
+        break
     while True:
         category = input('Enter a Category: ').strip()
         if category == "":
