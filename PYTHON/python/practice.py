@@ -224,3 +224,53 @@
 # Course.title()
 # Course.find()
 # Course.replace()
+# started, stopped = False,False
+# while True:
+#     user_input = input("> ").lower().strip()
+    
+#     if user_input == "help":
+#         print("""
+# start - to start the car
+# stop - to stop the car
+# quit - to exit""")
+#     elif user_input == "start":
+#         if started:
+#             print("Car already started")
+#         elif stopped:
+#             print("Car started.......Ready to go")
+#         else:
+#             started = True
+#             print("Car started.......Ready to go")
+#     elif user_input == "stop":
+#         if not started:
+#             print('Car has not been started yet')
+#         elif stopped:
+#             print("Car already stopped")
+#         else:
+#             stopped = True
+#             print("Car stopped")
+#     elif user_input == "quit":
+#         break
+#     else:
+#         print("I don't understand that...........")
+
+prices = [10,20,30]
+total_price = 0
+for item in prices:
+    total_price += item
+print(total_price)
+
+for x in range(10):
+    for y in range(5):
+        print(f"({x}, {y})")
+numbers = [5,2,5,2,2]
+for num in numbers:
+    print(num * 'x')
+
+# lists  = [78,34,56,23,45,43,23,45,23]
+# nums = lists[0]
+all = input()
+# for num in lists:
+#     if num not in all:
+#         all.append(num)
+print(all)

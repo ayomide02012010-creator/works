@@ -102,11 +102,11 @@ def main():
             highest_score[str(user_quest)] = score
         
         save_high_score(highest_score)
-        print(f'Quiz finished!\nYour score: {score}/{no_of_question} ({score/no_of_question*100:.0f}%)\nHighest Score: {highest_score[str(user_quest)]}\n')
+        print(f'Quiz finished!\nYour score: {score}/{no_of_question} ({score/no_of_question*100:.0f}%)\n')
         
         replay_or_not = input("Would you like to play again? (yes,y or no/n): ").lower().strip()
         
-        while replay_or_not not in ["yes","y"] and replay_or_not not in ["no","n"]:
+        while replay_or_not not in ["yes","y","no","n"]:
             print("❌ Invalid Input")
             replay_or_not = input("Would you like to play again? (yes,y or no/n): ").lower().strip()
         

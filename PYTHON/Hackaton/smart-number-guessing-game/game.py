@@ -75,14 +75,14 @@ def play_game():
       print(f'Attempts remaining: {attempts_remaining}\n')
     if attempts_remaining == 0:
       result = 'Lost'
-      print(f'Game Over!\nThe number was {secret_num}.\nYour Score = {score}\n')
+      print(f'Game Over!\nSorry you are out of attempts\nThe number was {secret_num}.\nYour Score = {score}\n')
       break
   show_summary(result, max_attempts, attempts_used, attempts_remaining, score)
   return result, attempts_used, attempts_remaining, score
 while True:
   result, attempts_used, attempts_remaining, score = play_game()
   play_again = input('Play again? (y/n):').lower().strip()
-  while play_again not in ['y','yes'] and play_again not in ['n','no']:
+  while play_again not in ['y','yes','n','no']:
     print('Enter "y" or "n".')
     play_again = input('Play again? (y/n):').lower().strip()
   if play_again in ['y', 'yes']:
