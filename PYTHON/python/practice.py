@@ -263,14 +263,88 @@ print(total_price)
 for x in range(10):
     for y in range(5):
         print(f"({x}, {y})")
-numbers = [5,2,5,2,2]
+numbers = [6,2,6,2,6]
 for num in numbers:
     print(num * 'x')
 
 # lists  = [78,34,56,23,45,43,23,45,23]
 # nums = lists[0]
-all = input()
-# for num in lists:
-#     if num not in all:
-#         all.append(num)
-print(all)
+# all = input()
+# # for num in lists:
+# #     if num not in all:
+# #         all.append(num)
+# print(all)
+
+customer = {
+    "name": "Yusuf",
+    "age": 17,
+    "is_verified": True
+}
+customer["birthdate"] = "jan 02 01" 
+print(customer["birthdate"])
+print(customer)
+
+phone_number = input("Phone: ")
+numbers = {
+    "0":"zero",
+    "1":"one",
+    "2":"two",
+    "3":"three",
+    "4":"four",
+    "5":"five",
+    "6":"six",
+    "7":"seven",
+    "8":"eight",
+    "9":"nine"
+}
+
+for num in phone_number:
+    print(numbers.get(num, '!'),end=' ',)
+print()
+
+
+def emoji_converter(message):
+    words = message.split()
+    emoji = {
+        ":)": "😀",
+        ":(": "😔",
+        "love": "❤️ ",
+        "python": "🐍"
+    }
+    output = ""
+    for word in words:
+        output += emoji.get(word, word) + " "
+    return output
+message = input("> ")
+print(f"converted :{emoji_converter(message)}")
+
+def greet_user(first_name, last_name):
+    print(f'Hi {first_name}, {last_name}')
+    print('Welcome Abroad')
+    
+print("Start")
+greet_user("Abdulrasaq",last_name="Alli")
+print("Finish")
+
+age = int(input("Your Age: "))
+print(age)
+
+class Point:
+    def move():
+        print("move")
+        
+    def draw():
+        print("draw")
+    
+Point.draw()
+
+
+from codetiming import Timer
+
+t = Timer(name="manual_timer")
+t.start()
+
+# Code you want to time
+data = [x**2 for x in range(10000000)]
+
+t.stop()  # Automatically prints elapsed time
