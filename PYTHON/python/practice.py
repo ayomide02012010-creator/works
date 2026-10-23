@@ -348,3 +348,15 @@ t.start()
 data = [x**2 for x in range(10000000)]
 
 t.stop()  # Automatically prints elapsed time
+
+
+class Person:
+    def __init__(self, name):
+        self.name = name
+    def talk(self):
+        print(f"Hi, I'm {self.name} ")
+
+john = Person("john smith")
+print(john.name)
+john.talk()
+
