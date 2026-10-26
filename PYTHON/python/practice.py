@@ -359,4 +359,5 @@ class Person:
 john = Person("john smith")
 print(john.name)
 john.talk()
+Person.talk()
 
