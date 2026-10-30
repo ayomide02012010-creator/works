@@ -1,0 +1,11 @@
+type,category,description,amount,date
+income,Salary,Monthly salary,150000.0,2026-10-30
+expense,Food,Snacks,500.0,2026-10-30
+expense,Food,Snacks,1000.0,2026-10-30
+income,Salary,Stipend,100000.0,2026-9-1
+income,Money,Monthly allawance,10000.0,2026-10-1
+expense,Food,Snacks,300.0,2026-10-28
+expense,Food,Dinner,4000.0,2026-10-30
+expense,Food,Braek-fast,13000.0,2026-10-30
+expense,Food,Lunch,5000.0,2026-10-30
+expense,Food,Dinner,2500.0,2026-10-30
