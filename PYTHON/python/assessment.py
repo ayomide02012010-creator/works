@@ -14,6 +14,16 @@ rounds = 0
 score = 0
 history = []
 
+print("Welcome to coin flip game")
+def greetings(name):
+  return f"Welcome {name}"
+name = input("Enter your name: ").capitalize().strip()
+while name == "":
+  print("Name can't be Empty")
+  name = input("Enter your name: ").capitalize().strip()
+
+greetings(name)
+print()
 while True:
   game = flip_coin()
   history.append(f'Round {rounds + 1}: You Picked {game["user"]} | Computer picked {game["computer"]} | Result: {game["result"]}')
@@ -39,8 +49,8 @@ while True:
     print()
     continue
   elif another_try in ['n', 'no']:
-    print(f"\nThanks for playing!\nFinal score:{score}")
-    print('\n' + '=' * 8 + 'HISTORY' + '=' * 8)
+    print(f"\nThanks for playing!\nFinal score:{score}\n")
+    print('HISTORY'.center(23, "="))
     for record in history:
       print(record)
     break

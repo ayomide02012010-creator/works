@@ -11,7 +11,7 @@ def flip_coin():
   
   machine_output = random.choice(["Heads","Tails"]).lower()
   
-  print("\nTossing the coin...")
+  print("\nTossing the coin".ljust(20, "."))
   time.sleep(2)
   
   if user_input == machine_output:
@@ -52,10 +52,10 @@ def show_summary(wins, losses, rounds):
 
   wrate = calculate_win_rate(wins, rounds)
   lrate = calculate_loss_rate(losses, rounds)
-  print('=' * 8 + 'SUMMARY' + '=' * 8)
+  print('SUMMARY'.center(20, "="))
   print(f'Round Played:{rounds}')
   print(f"wins: {wins}")
   print(f"losses: {losses}")
   print(f"Win Rate: {wrate:.2f}%")
   print(f"Loss Rate: {lrate:.2f}%")
-  print('------------------------')
+  print('-'.ljust(20, "-"))
