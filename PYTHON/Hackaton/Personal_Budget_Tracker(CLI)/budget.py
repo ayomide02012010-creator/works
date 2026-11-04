@@ -156,7 +156,18 @@ def filter_by_month(transactions, month):
             filtered_transaction.append(transaction)
     
     return filtered_transaction
-    
+def show_spending_chart(transactions):
+    spending_by_category = view_by_category(transactions)
+    if not spending_by_category:
+        print("No Expense To Display")
+        return
+    print(f"\n{'Category':<20} {"Bar chart":<14} {'Amount':>8}\n")
+    for category, amount in spending_by_category.items():
+        bar_length = max(int(amount/10000), 1)
+        bar_chart = "█" * bar_length
+        print(f"{category:<20} |{bar_chart:<15} ₦{amount:>12,.2f}")
+    print()
+        
 def main():
     global transactions
     transactions = load_transactions()
@@ -164,7 +175,7 @@ def main():
     budget = load_budget()
     while True:
         print(" BUDGET TRACKER ".center(26, "="))
-        print("[1] Add Income  [2] Add Expense  [3] View All  [4] Summary  [5] By Category [6] Set Category Budget [7] Filter Transactions By Month [8] Exit")
+        print("[1] Add Income  [2] Add Expense  [3] View All  [4] Summary  [5] By Category [6] Set Category Budget [7] Filter Transactions By Month [8] Spending Chart [9] Exit")
         user_input = input("\n> ").lower().strip()
         if user_input == "1":
             type_of_transactions = "income"
@@ -203,23 +214,15 @@ def main():
             save_budget(budget)       
         elif user_input == "7":
             months = {
-                "01" : "January",
-                "02" : "February",
-                "03" : "March",
-                "04" : "April",
-                "05" : "May",
-                "06" : "June",
-                "07" : "July",
-                "08" : "August",
-                "09" : "September",
-                "10" : "October",
-                "11" : "November",
-                "12" : "December"
+                "01" : "January","02" : "February","03" : "March",
+                "04" : "April","05" : "May","06" : "June",
+                "07" : "July","08" : "August","09" : "September",
+                "10" : "October","11" : "November","12" : "December"
             }
             month = input("\nEnter Year & Month (YYYY-MM): ").strip()
-            if len(month) != 7 or not month[:4].isdigit() or month[4] != "-":
+            while len(month) != 7 or not month[:4].isdigit() or month[4] != "-":
                 print("❌ Invalid Format. Correct Format(YYYY-MM).\n")
-                continue
+                month = input("Enter Year & Month (YYYY-MM): ").strip()
             if month[5:] not in months:
                 print("Invalid month. Please enter a month between 01 and 12.\n")
                 continue
@@ -233,6 +236,8 @@ def main():
                 print(f"{monthly_transaction['description']:<20} ₦{monthly_transaction['amount']:>14,.2f} {monthly_transaction['date']:>20}")
             print()
         elif user_input == "8":
+            show_spending_chart(transactions)
+        elif user_input == "9":
             print("👋Goodbye! Your transactions has been saved")
             break
         else:
