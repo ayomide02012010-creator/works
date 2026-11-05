@@ -101,3 +101,39 @@
 #         print(f'Quiz finished!\nYour score: {score}/{no_of_question}')
 #         break
 #     print()
+
+
+# # #=====================1========================
+# age = int(input("Enter your age: "))
+# if age >= 18:
+#     print("You are an adult.")
+# else:
+#     print("You are a minor.")
+
+# # ==================2========================
+# 
+  # another_try = input("\nPlay again? ").lower().strip()
+  # while another_try not in ['y', 'yes'] and another_try not in ['n','no']:
+    # print('Please enter yes or no.')
+    # another_try = input('Play again? ').lower().strip()
+  # if another_try in ['y', 'yes']:
+    # print()
+    # continue
+  # elif another_try in ['n', 'no']:
+    # print(f"\nThanks for playing!\nFinal score:{score}\n")
+    # print('HISTORY'.center(23, "="))
+    # for record in history:
+      # print(record)
+    # break
+  
+# ======================3========================
+# import random
+# names = input("Enter two or more names(preceeding each name with ','): ").split(',')
+# while len(names) < 2:
+#     print('Enter at least two names.')
+#     names = input('Enter two or more names: ').split(',')
+# while True:
+#   if len(names) > 1: 
+#     person_to_pay = random.choice(names)
+#     print(f'{person_to_pay}, Sorry the bill is on You')
+#     break

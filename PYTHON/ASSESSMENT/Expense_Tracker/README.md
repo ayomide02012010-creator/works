@@ -118,4 +118,4 @@ For more details: Visit [https://realpython.com/python-json/](https://realpytho
 4. Loops
 5. Exceptions
 6. File handling
-7. JSON
+7. 

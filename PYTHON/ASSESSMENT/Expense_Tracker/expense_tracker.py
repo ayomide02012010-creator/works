@@ -30,13 +30,13 @@ def add_expense():
     }    
     expenses.append(expense_dict)
 
-def calculate_total():   
+def calculate_total(expenses):   
     running_total = 0
     for expense in expenses:
         running_total += expense["Amount"]
     return running_total
 
-def calculate_by_category():
+def calculate_by_category(expenses):
     category_total = {}
     for expense in expenses:
         if expense['Category'] in category_total:
@@ -45,7 +45,7 @@ def calculate_by_category():
             category_total[expense['Category']] = expense["Amount"]
     return category_total
 
-def view_expenses():
+def view_expenses(expenses):
     print("=" * 7 + 'Your Expenses' + "=" * 7)
     idx = 0
     for expense in expenses:
@@ -91,7 +91,6 @@ def load_expenses():
     except FileNotFoundError:
         return expenses
     except json.JSONDecodeError:
-        print('File exists, but the JSON is invalid.')
         return expenses
         
     
@@ -122,14 +121,14 @@ def main():
             if not expenses:
                 print('No Expense added yet')
                 continue
-            view_expenses()
+            view_expenses(expenses)
         elif user_choice == '3':
             print('=' * 7 + 'Total spending' + '=' * 7)
-            total = calculate_total()
+            total = calculate_total(expenses)
             print(f'Total Spending: ${total:.2f}\n')
         elif user_choice == '4':
             print('=' * 7 + 'Spending by category' + '=' * 7)
-            spending_by_category = calculate_by_category()
+            spending_by_category = calculate_by_category(expenses)
             for key, value in spending_by_category.items():
                 print(f"{key} --> ${value:.2f}")
             print()
