@@ -16,7 +16,7 @@ def get_incomplete_tasks(tasks):
 
 print(get_incomplete_tasks(tasks))
 
-# ==============2================
+# # ==============2================
 expenses = [
     {"category": "Food", "amount": 5000},
     {"category": "Transport", "amount": 3000},
@@ -41,15 +41,17 @@ scores = [
     {"player": "David", "score": 25}
 ]
 
-# def highest_scorer(scores):
-#     high = []
-#     for scorer in scores:
-#         for player, score in scorer.items():
-#             if score in high:
-                
-#             print(score)
+def highest_scorer(scores):
+    highest = scores[0]["score"]
+    highest_player = scores[0]["player"]
+    for scorer in scores:
+        if highest < scorer["score"]:
+            highest = scorer["score"]
+            highest_player = scorer["player"]
+    return highest_player
+           
             
-# highest_scorer(scores)
+print(highest_scorer(scores))
 
 # ======================4=====================
 expenses = [
@@ -64,8 +66,6 @@ def filter_expenses(expenses, minimum):
     for expense in expenses:
         if expense["amount"] >= minimum:
             my_list.append(expense["amount"])
-        else:
-            pass
     return my_list
 print(filter_expenses(expenses, 3000))
         
@@ -79,9 +79,9 @@ tasks = [
 ]
 
 def count_tasks(tasks):
+    completed = 0
+    incomplete = 0
     for task in tasks:
-        completed = 0
-        incomplete = 0
         if task["completed"]  == True:
             completed += 1
         else:
@@ -93,3 +93,23 @@ def count_tasks(tasks):
     }
     return filterd
 print(count_tasks(tasks))
+# ================6====================
+expenses = [
+    {"category": "Food", "amount": 5000},
+    {"category": "Transport", "amount": 3000},
+    {"category": "Books", "amount": 2000},
+    {"category": "Food", "amount": 4000}
+]
+
+def top_categories(expenses, n):
+    category_total ={}
+    for expense in expenses:
+        if expense["category"] in category_total:
+            category_total[expense["category"]] += expense["amount"]
+        else:
+            category_total[expense["category"]] = expense["amount"]
+    sorted_categories = sorted(category_total, key=lambda category: (-category_total[category], category))
+    return sorted_categories[n]
+    
+
+print(top_categories(expenses, 0))

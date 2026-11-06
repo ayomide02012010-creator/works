@@ -1,4 +1,4 @@
-import csv
+import csv, datetime
 
 transactions = []
 budget = {}
@@ -61,24 +61,13 @@ def add_transaction(transactions, type_of_transactions):
                 break
         except ValueError:
             print("❌ Enter A Valid Amount")
-    
-    while True:
-        date = input("Enter The Date Of Your Transaction: ").capitalize().strip()
-        if date == "":
-            print("❌ Your Date Can't Be Empty. Please Enter A  Date")
-            continue
-        elif len(date) != 10:
-            print("❌ Invalid format. Correct format (YYYY-MM-DD)")
-            continue
-        else:
-            break
         
     current_transactions = {
         "type": type_of_transactions,
         "category": category,
         "description": description,
         "amount": amount,
-        "date": date
+        "date": datetime.date.today().isoformat()
     }
     
     transactions.append(current_transactions)
@@ -175,7 +164,7 @@ def main():
     budget = load_budget()
     while True:
         print(" BUDGET TRACKER ".center(26, "="))
-        print("[1] Add Income  [2] Add Expense  [3] View All  [4] Summary  [5] By Category [6] Set Category Budget [7] Filter Transactions By Month [8] Spending Chart [9] Exit")
+        print("[1] Add Income  [2] Add Expense  [3] View All  [4] Summary  [5] By Category [6] Set Category Budget [7] Filter Transactions By Month [8] Spending Chart [0] Exit")
         user_input = input("\n> ").lower().strip()
         if user_input == "1":
             type_of_transactions = "income"
@@ -237,7 +226,7 @@ def main():
             print()
         elif user_input == "8":
             show_spending_chart(transactions)
-        elif user_input == "9":
+        elif user_input == "0":
             print("👋Goodbye! Your transactions has been saved")
             break
         else:
