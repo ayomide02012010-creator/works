@@ -7,11 +7,11 @@ students = {
     "Chidi Nwachukwu": {
         "Mathematics": [56,70,77],
         "English": [91, 90, 99],
-        "Physics": [39, 55, 70]
+        "Physics": [55, 55, 70]
     },
     "Fatima Bello": {
             "Mathematics": [59,77,97],
-            "English": [72, 68, 88],
+            "English": [72, 86, 88],
             "Physics": [65, 30, 90]
         }
 }
@@ -31,33 +31,54 @@ def calculate_grade(average):
     elif 80 <= average < 90:
         grade = "B"
         point = 3.0
-    elif 90 <= average < 100:
+    elif 90 <= average <= 100:
         grade = "A"
         point = 4.0
     return (grade, point)
 
 def student_summary(student_name, scores):
-    alll = []
+    overall_averages = []
+    subject_scores = {}
+    for subject_name, subject_score in scores.items():
+        average = sum(subject_score)/len(subject_score)
+        subject_scores[subject_name] = average 
+        overall_averages.append(sum(subject_score))
+
+    overall_average = sum(overall_averages) / 9
+    grade, gpa = calculate_grade(overall_average)
+    
+    subject_averages =  {
+        "name": student_name,
+        "subjects": subject_scores,
+        "overall_average": round(overall_average, 1),
+        "grade": grade,
+        "gpa": gpa
+    }
+    return subject_averages
+
+def rank_students(students):
+    students_reports = []
+    for student in students:
+        student_report = student_summary(student, students[student])
+        students_reports.append(student_report)
+    sort_student_report = sorted(students_reports, key=lambda report: report["overall_average"], reverse=True)
+    return sort_student_report
+ranking = rank_students(students)
+for rank in ranking:
+    print(f"{rank["name"]} — {rank["overall_average"]}")
+
+def write_report(report):
+    with open("report.txt", "w") as file:
+        file.write("="*50+"\n")
+        file.write("STUDENT REPORT".center(50, " ") +"\n")
+        file.write("="*50+"\n")
         
-    for student_name, scores in students.items():
-        for subject, subject_score in scores.items():
-            average = sum(subject_score)/3
-            scores = calculate_grade(average)
-            student_dict = dict([(student_name, scores)])
-            alll.append(student_dict)
-    return alll
-
-print(student_summary(student_name="", scores=""))
-
-
-
-
-
-
-
-
-
-
+        file.write(f"Name: {report['name']}\n")
+        file.write(f"Overall Average: {report['overall_average']}\n")
+        file.write(f"Grade: {report['grade']}\n")
+        file.write(f"GPA: {report['gpa']}\n")
+for report in ranking:
+    write_report(report)
 
 
 
