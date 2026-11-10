@@ -68,12 +68,14 @@ for rank in ranking:
     print(f"{rank["name"]} — {rank["overall_average"]}")
 
 def write_report(report):
-    with open("report.txt", "w") as file:
+    with open("report.txt", "a") as file:
         file.write("="*50+"\n")
         file.write("STUDENT REPORT".center(50, " ") +"\n")
         file.write("="*50+"\n")
         
         file.write(f"Name: {report['name']}\n")
+        file.write("SUBJECT RESULTS\n")
+        for subject, subject_score in report["sub"]
         file.write(f"Overall Average: {report['overall_average']}\n")
         file.write(f"Grade: {report['grade']}\n")
         file.write(f"GPA: {report['gpa']}\n")
