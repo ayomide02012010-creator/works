@@ -375,21 +375,21 @@ expenses = [
 
 
 
-def top_categories(expenses, n):
-    category_total ={}
-    for expense in expenses:
-        category = expense["category"]
-        amount = expense["amount"]
-        if category in category_total:
-            category_total[category] += amount
-        else:
-            category_total[category] = amount
-    sorted_categories = sorted(category_total, key=lambda category: (-category_total[category], category))
-    return sorted_categories[:n]
-    # return category_total
+# def top_categories(expenses, n):
+#     category_total ={}
+#     for expense in expenses:
+#         category = expense["category"]
+#         amount = expense["amount"]
+#         if category in category_total:
+#             category_total[category] += amount
+#         else:
+#             category_total[category] = amount
+#     sorted_categories = sorted(category_total, key=lambda category: (-category_total[category], category))
+#     return sorted_categories[:n]
+#     # return category_total
 
-spending_by_category = top_categories(expenses, 3)
-print(spending_by_category)
+# spending_by_category = top_categories(expenses, 3)
+# print(spending_by_category)
 # spending_by_category = top_categories(expenses, 1)        
 # for key, value in spending_by_category.items():
 #     print(f"{key} --> ${value:.2f}")
@@ -402,3 +402,24 @@ print(spending_by_category)
 #             category_total[category] += amount
 #         else:
 #             category_total[category] = amount
+
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
+
+analyzer = SentimentIntensityAnalyzer()
+
+# feedback = "This application is terrible!"
+feedbacks = ["I love this application!","The application is okay.","This application is terrible!"]
+
+def analyze_sentiment(feedback):
+    result = analyzer.polarity_scores(feedback)
+    compound_score = result["compound"]
+    if compound_score >= 0.05:
+        return "Positive"
+    elif compound_score <= -0.05:
+        return "Negative"
+    else:
+        return "Neutral"
+
+for feedback in feedbacks:
+    result = analyze_sentiment(feedback)
+    print(f"Review: {feedback}\nSentiment: {result}\n")

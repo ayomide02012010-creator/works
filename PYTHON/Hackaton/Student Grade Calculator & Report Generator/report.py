@@ -75,7 +75,8 @@ def write_report(report):
         
         file.write(f"Name: {report['name']}\n")
         file.write("SUBJECT RESULTS\n")
-        for subject, subject_score in report["sub"]
+        for subject, subject_score in report["subject"].items():
+            
         file.write(f"Overall Average: {report['overall_average']}\n")
         file.write(f"Grade: {report['grade']}\n")
         file.write(f"GPA: {report['gpa']}\n")

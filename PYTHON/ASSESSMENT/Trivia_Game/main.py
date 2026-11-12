@@ -86,10 +86,15 @@ def main():
         user_quest = select_question(questions)
         questions_to_be_answered = random.sample(questions, user_quest)
         for each_question in questions_to_be_answered:
+            
             print(f'Question {no_of_question+1}/{user_quest}')
+            
             print(each_question["question"],"\n")
+            
             random.shuffle(each_question["options"])
+            
             display_option(each_question)
+            
             user_answer = get_answer(each_question)
             user = validate_answer(each_question, user_answer)
             no_of_question += 1
