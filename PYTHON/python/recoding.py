@@ -247,136 +247,230 @@
 
 # transactions = [500, 2000, 7500, 1000, 9000, 300]
 # limit = 1500
-
+# 
 # print(large_transactions(transactions, limit))
-
-# # ==========================16====================
-def group_transactions(transactions):
-    deposit = []
-    withdrawal = []
-    for transaction in transactions:
-        if transaction < 0:
-            withdrawal.append(transaction)
-        elif transaction > 0:
-            deposit .append(transaction)
-    return {"deposits": deposit, "withdrawals": withdrawal}
-
-transactions = [5000, -2000, 3000, -1000, 0, 4000]
-print(group_transactions(transactions))
-# # ====================17====================
-def average_transaction(transactions):
-    if not transactions:
-        return 0
-    
-    average = sum(transactions)/len(transactions)
-    return round(average, 1)
-
-transactions = [1000, 2000, 3000, 4000]
-print(average_transaction(transactions))
-
+# 
+# ==========================16====================
+# def group_transactions(transactions):
+    # deposit = []
+    # withdrawal = []
+    # for transaction in transactions:
+        # if transaction < 0:
+            # withdrawal.append(transaction)
+        # elif transaction > 0:
+            # deposit .append(transaction)
+    # return {"deposits": deposit, "withdrawals": withdrawal}
+# 
+# transactions = [5000, -2000, 3000, -1000, 0, 4000]
+# print(group_transactions(transactions))
+# ====================17====================
+# def average_transaction(transactions):
+    # if not transactions:
+        # return 0
+    # 
+    # average = sum(transactions)/len(transactions)
+    # return round(average, 1)
+# 
+# transactions = [1000, 2000, 3000, 4000]
+# print(average_transaction(transactions))
+# 
 # =====================18==============
-def transaction_frequency(transactions):
-    frequency = {}
-    counter = 0
-    for transaction in transactions:
-        if transaction in frequency:
-            frequency[transaction] = frequency[transaction] + 1
-        else: 
-            frequency[transaction] = counter+1
-    return frequency
-transactions = [1000, 2000, 1000, 3000, 2000,3000, 1000]
-print(transaction_frequency(transactions))
-
+# def transaction_frequency(transactions):
+    # frequency = {}
+    # counter = 0
+    # for transaction in transactions:
+        # if transaction in frequency:
+            # frequency[transaction] = frequency[transaction] + 1
+        # else: 
+            # frequency[transaction] = counter+1
+    # return frequency
+# transactions = [1000, 2000, 1000, 3000, 2000,3000, 1000]
+# print(transaction_frequency(transactions))
+# 
 # ===================19==============
-def most_frequent_transaction(transactions):
-    if not transactions:
-        return None
-    
-    frequency = {}
-    counter = 0
-    for transaction in transactions:
-        if transaction in frequency:
-            frequency[transaction] = frequency[transaction] + 1
-        else: 
-            frequency[transaction] = counter+1
-    highest_frequency = 0
-    high = 0
-    for amount, value in frequency.items():
-        if value > highest_frequency:
-            highest_frequency = value
-            high = amount
-    return high
-            
-        
-transactions = [1000, 1000, 2000, 1000, 2000, 3000, 3000, 3000, 3000]
-print(most_frequent_transaction(transactions))
+# def most_frequent_transaction(transactions):
+    # if not transactions:
+        # return None
+    # 
+    # frequency = {}
+    # counter = 0
+    # for transaction in transactions:
+        # if transaction in frequency:
+            # frequency[transaction] = frequency[transaction] + 1
+        # else: 
+            # frequency[transaction] = counter+1
+    # highest_frequency = 0
+    # high = 0
+    # for amount, value in frequency.items():
+        # if value > highest_frequency:
+            # highest_frequency = value
+            # high = amount
+    # return high
+            # 
+        # 
+# transactions = [1000, 1000, 2000, 1000, 2000, 3000, 3000, 3000, 3000]
+# print(most_frequent_transaction(transactions))
 # ==========================20==================
+# products = [
+    # {"name": "Laptop", "price": 200000},
+    # {"name": "Phone", "price": 100000},
+    # {"name": "Mouse", "price": 10000}
+# ]
+# 
+# discount = 10
+# def apply_discount(products, discount):
+    # for product in products:
+        # disc = product["price"] - (product["price"]*discount/100)
+        # product["price"] = round(disc)
+    # return products
+# 
+# print(apply_discount(products, discount))
+# 
+# =====================21===================
+# products = [
+    # {"name": "Laptop", "quantity": 15},
+    # {"name": "Mouse", "quantity": 4},
+    # {"name": "Keyboard", "quantity": 8},
+    # {"name": "Monitor", "quantity": 2},
+    # {"name": "USB Cable", "quantity": 20}
+# ]
+# 
+# threshold = 10
+# 
+# def low_stock(products, threshold):
+    # below_threshold = []
+    # for product in products:
+        # if product["quantity"] < threshold:
+            # below_threshold.append(product["name"])
+    # return below_threshold
+# 
+# print(low_stock(products, threshold))
+# 
+# ======================22===================
+# def inventory_value(products):
+    # all_value = []
+    # for product in products:
+        # calc = product["price"]* product["quantity"]
+        # all_value.append(calc)
+    # return sum(all_value)    
+    # 
+# products = [
+    # {"name": "Laptop", "price": 200000, "quantity": 3},
+    # {"name": "Mouse", "price": 5000, "quantity": 10},
+    # {"name": "Keyboard", "price": 10000, "quantity": 5}
+# ]
+# 
+# print(inventory_value(products))
+# ===================23=======================
+# def most_expensive(products):
+    # if not products:
+        # return None
+    # name = None
+    # highest = 0
+    # for product in products:
+        # if  product["price"] > highest:
+            # highest = product["price"]
+            # name = product["name"]
+#     # return name
+#             # 
+# products = [
+#     {"name": "Laptop", "price": 200000, "quantity": 3},
+#     {"name": "Mouse", "price": 5000, "quantity": 10},
+#     {"name": "Keyboard", "price": 10000, "quantity": 5}
+# ]
+# # 
+# # print(most_expensive(products))
+# # =========================24======================
+# products = [
+#     {"name": "Laptop", "category": "Electronics"},
+#     {"name": "Mouse", "category": "Electronics"},
+#     {"name": "Shirt", "category": "Clothing"},
+#     {"name": "Shoes", "category": "Clothing"},
+#     {"name": "Shoes", "category": "Clothing"},
+#     {"name": "Shoes", "category": "Clothing"},
+#     {"name": "Phone", "category": "Electronics"},
+#     {"name": "Phone", "category": "Electronics"},
+#     {"name": "Phone", "category": "Electronics"}
+# ]
+# 
+# def count_categories(products):
+    # categories = {}
+    # for product in products:
+        # counter = 0 
+        # if product["category"] in categories:
+            # categories[product["category"]] += 1
+        # else:
+            # categories[product["category"]] = counter + 1
+    # return categories
+# 
+# # print(count_categories(products))
+# ================================25==========================
+# products = [
+#     {"name": "Laptop", "price": 200000},
+#     {"name": "Mouse", "price": 5000},
+#     {"name": "Keyboard", "price": 10000},
+#     {"name": "Monitor", "price": 150000}
+# ]
+# 
+# minimum_price = 10000
+# def filter_by_price(products, minimum_price):
+    # filtered = []
+    # for product in products:
+        # if product["price"] >= minimum_price:
+            # filtered.append(product['name'])
+    # return filtered
+# 
+# print(filter_by_price(products ,minimum_price))
+# 
+# ========================26===========================
+products = [
+    {"name": "Laptop"},
+    {"name": "Mouse"},
+    {"name": "Laptop"},
+    {"name": "Laptop"},
+    {"name": "Keyboard"},
+    {"name": "Mouse"}
+]
+
+def duplicate_products(products):
+    duplicate =  []
+    new = []
+    for product in products:  
+        if product["name"] not in duplicate:
+            duplicate.append(product["name"])
+        elif product["name"] not in new:
+            new.append(product["name"])
+    return new
+print(duplicate_products(products))  
+# =============================27========================
+def average_price(products):
+    if not products:
+        return 0
+    price = 0 
+    for product in products:
+        price += product["price"]
+    return round(price/len(products), 2)
+
+
 products = [
     {"name": "Laptop", "price": 200000},
-    {"name": "Phone", "price": 100000},
-    {"name": "Mouse", "price": 10000}
+    {"name": "Mouse", "price": 5000},
+    {"name": "Keyboard", "price": 10000}
 ]
 
-discount = 10
-def apply_discount(products, discount):
-    for product in products:
-        disc = product["price"] - (product["price"]*discount/100)
-        product["price"] = round(disc)
-    return products
-
-print(apply_discount(products, discount))
-
-# =====================21===================
+print(average_price(products))
+# ==============================28=========================
 products = [
-    {"name": "Laptop", "quantity": 15},
-    {"name": "Mouse", "quantity": 4},
-    {"name": "Keyboard", "quantity": 8},
-    {"name": "Monitor", "quantity": 2},
-    {"name": "USB Cable", "quantity": 20}
+    {"name": "Laptop", "price": 200000},
+    {"name": "Mouse", "price": 5000},
+    {"name": "Keyboard", "price": 10000},
+    {"name": "Monitor", "price": 150000}
 ]
 
-threshold = 10
-
-def low_stock(products, threshold):
-    below_threshold = []
-    for product in products:
-        if product["quantity"] < threshold:
-            below_threshold.append(product["name"])
-    return below_threshold
-
-print(low_stock(products, threshold))
-
-# ======================22===================
-def inventory_value(products):
-    all_value = []
-    for product in products:
-        calc = product["price"]* product["quantity"]
-        all_value.append(calc)
-    return sum(all_value)    
-    
-products = [
-    {"name": "Laptop", "price": 200000, "quantity": 3},
-    {"name": "Mouse", "price": 5000, "quantity": 10},
-    {"name": "Keyboard", "price": 10000, "quantity": 5}
-]
-
-print(inventory_value(products))
-# ===================23=======================
-def most_expensive(products):
-    if not products:
+def second_most_expensive(products):
+    if len(products) < 2:
         return None
-    name = None
-    highest = 0
-    for product in products:
-        if  product["price"] > highest:
-            highest = product["price"]
-            name = product["name"]
-    return name
-            
-products = [
-    {"name": "Laptop", "price": 200000, "quantity": 3},
-    {"name": "Mouse", "price": 5000, "quantity": 10},
-    {"name": "Keyboard", "price": 10000, "quantity": 5}
-]
+    sort = sorted(products, key=lambda product: product["price"], reverse=True)
+    return sort[1]["name"]
 
-print(most_expensive(products))
+print(second_most_expensive(products))
