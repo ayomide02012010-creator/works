@@ -1,5 +1,5 @@
 from tool import flip_coin, show_summary, update_high_scores, load_high_scores
-import csv
+
 wins, losses, rounds, score = 0,0,0,0
 history = []
 high_scores = {}
@@ -21,10 +21,10 @@ while chosen_mode not in ["A","B"]:
   chosen_mode = input("> ").strip().capitalize()
 print()
 if chosen_mode == 'A':
-  round_to_be_played = input("Enter The Number Of You Round Want Play: ").strip()
+  round_to_be_played = input("Enter The Number Of Round You Want Play: ").strip()
   while not round_to_be_played.isdigit() or round_to_be_played == '0':
     print("❌ Invalid Number Of Rounds")
-    round_to_be_played = input("Enter The Number Of You Want play: ").strip()
+    round_to_be_played = input("Enter The Number Of RoundYou Want play: ").strip()
   for num_of_round in range(int(round_to_be_played)):
     game = flip_coin()
     history.append(f'Round {rounds + 1}: You Picked {game["user"]} | Computer picked {game["computer"]} | Result: {game["result"]}')

@@ -37,14 +37,19 @@ def calculate_grade(average):
     return (grade, point)
 
 def student_summary(student_name, scores):
-    overall_averages = []
     subject_scores = {}
+    list_of_scores = []
     for subject_name, subject_score in scores.items():
+        if not subject_score:
+            continue
+        
         average = sum(subject_score)/len(subject_score)
         subject_scores[subject_name] = average 
-        overall_averages.append(sum(subject_score))
-
-    overall_average = sum(overall_averages) / 9
+        
+        list_of_scores.extend(subject_score)
+    if not list_of_scores:
+        raise ValueError("Student hasn't submitted any scores")    
+    overall_average = sum(list_of_scores) / len(list_of_scores)
     grade, gpa = calculate_grade(overall_average)
     
     subject_averages =  {
@@ -64,9 +69,6 @@ def rank_students(students):
     sort_student_report = sorted(students_reports, key=lambda report: report["overall_average"], reverse=True)
     return sort_student_report
 ranking = rank_students(students)
-for rank in ranking:
-    print(f"{rank["name"]} — {rank["overall_average"]}")
-
 def write_report(report):
     with open("report.txt", "a") as file:
         file.write("="*50+"\n")
@@ -75,7 +77,8 @@ def write_report(report):
         
         file.write(f"Name: {report['name']}\n")
         file.write("SUBJECT RESULTS\n")
-        for subject, subject_score in report["subject"].items():
+        for subject, subject_score in report["subjects"].items():
+            file.write(f"{subject} --> {round(subject_score, 2)}\n")
             
         file.write(f"Overall Average: {report['overall_average']}\n")
         file.write(f"Grade: {report['grade']}\n")

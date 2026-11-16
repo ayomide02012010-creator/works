@@ -474,3 +474,309 @@ def second_most_expensive(products):
     return sort[1]["name"]
 
 print(second_most_expensive(products))
+# =======================29==============
+def group_products(products):
+    group_by_cat = {}
+    for product in products:
+        if product["category"] in group_by_cat:
+            group_by_cat[product["category"]] += [product["name"]]
+        else:
+            group_by_cat[product["category"]] = [product["name"]]
+    return group_by_cat
+    
+products = [
+    {"name": "Laptop", "category": "Electronics"},
+    {"name": "Mouse", "category": "Electronics"},
+    {"name": "Shirt", "category": "Clothing"},
+    {"name": "Shoes", "category": "Clothing"},
+    {"name": "Phone", "category": "Electronics"}
+]
+print(group_products(products))
+# ===============30=====================
+weather_data = [
+    "Lagos,32,80",
+    "Abuja,29,65",
+    "Ilorin,30,70",
+    "Kano,35,45"
+]
+def parse_weather(weather_data):
+    result = []
+    for weather in weather_data:
+        each_item = weather.split(',')
+        city, temp, hum = each_item[0], int(each_item[1]), int(each_item[2])
+        dictionary = dict(city=city, temparature=temp, humudity=hum)
+        result.append(dictionary)
+    return result
+    
+print(parse_weather(weather_data))
+# =====================31=================
+def hottest_city(weather):
+    if not weather:
+        return None
+    
+    hottest = 0
+    for item in weather:
+        if item["temperature"] > hottest:
+            hottest = item["temperature"]
+            name = item["city"]
+    return name
+    
+weather = [
+    {"city": "Lagos", "temperature": 32, "humidity": 80},
+    {"city": "Abuja", "temperature": 29, "humidity": 65},
+    {"city": "Ilorin", "temperature": 30, "humidity": 70},
+    {"city": "Kano", "temperature": 35, "humidity": 45}
+]
+
+print(hottest_city(weather))
+# ======= ALTERNATE=================
+def hottest_city(weather):
+    if not weather:
+        return None
+
+    hottest = max(weather, key=lambda item: item["temperature"])
+    return hottest["city"]
+
+# =======================32=====================
+def average_temperaturee(weather):
+    if not weather:
+        return 0
+    
+    result = sum(weather)/len(weather)
+    return round(result, 2)
+
+# ===================== ALTERNATE 32=====================
+def average_temperaturee(weather):
+    if not weather:
+        return 0
+
+    temperatures = [item["temperature"] for item in weather]
+
+    return round(sum(temperatures) / len(temperatures), 2)
+
+# ==================33=======================
+def cities_above_average(weather):
+    if not weather:
+        return []
+    
+    temp = [item["temperature"] for item in weather]
+    average_temperature = sum(temp)/len(temp)
+    name_of_city = [item["city"] for item in weather if item["temperature"] > average_temperature]
+    return name_of_city
+    
+weather = [
+    {"city": "Lagos", "temperature": 32},
+    {"city": "Abuja", "temperature": 29},
+    {"city": "Ilorin", "temperature": 30},
+    {"city": "Kano", "temperature": 35}
+]
+
+print(cities_above_average(weather))
+# =================ALTERNATE===============
+def cities_above_average(weather):
+    if not weather:
+        return []
+
+    temperatures = [item["temperature"] for item in weather]
+    average = sum(temperatures) / len(temperatures)
+
+    cities = []
+
+    for item in weather:
+        if item["temperature"] > average:
+            cities.append(item["city"])
+
+    return cities
+# =================34===============
+def classify_humidity(weather):
+    high = [item["city"] for item in weather if item["humidity"] >= 70]
+    low = [item["city"] for item in weather if item["humidity"] < 70]
+    
+    result = dict(high=high, normal=low)
+    return result
+
+weather = [
+    {"city": "Lagos", "temperature": 32, "humidity": 80},
+    {"city": "Abuja", "temperature": 29, "humidity": 65},
+    {"city": "Ilorin", "temperature": 30, "humidity": 70},
+    {"city": "Kano", "temperature": 35, "humidity": 45}
+]
+
+print(classify_humidity(weather))
+# =================ALTERNATE==============================
+def classify_humidity(weather):
+    result = {"high": [], "normal": []}
+
+    for item in weather:
+        if item["humidity"] >= 70:
+            result["high"].append(item["city"])
+        else:
+            result["normal"].append(item["city"])
+
+    return result
+# =====================35==================
+
+def most_humid__city(weather):
+    if not weather:
+        return None
+    else:
+        high_humidity =  max(weather, key=lambda item: item["humidity"])
+        return high_humidity["city"]
+    
+print(most_humid__city(weather))
+
+# =========================ALTERNATIVE===================
+def most_humid__city(weather):
+    if not weather:
+        return None
+
+    highest = weather[0]
+
+    for item in weather:
+        if item["humidity"] > highest["humidity"]:
+            highest = item
+
+    return highest["city"]
+
+# ====================36=======================
+def count_temperature_ranges(weather):
+    hot,warm,cold = 0,0,0
+    for item in weather:
+        if item["temperature"] >= 30:
+            hot += 1
+        elif 20 <= item["temperature"] < 30:
+            warm += 1
+        elif item["temperature"] < 20:
+            cold += 1
+    humudity = dict(hot=hot, warm=warm, cold=cold)
+    return humudity
+
+print(count_temperature_ranges(weather))
+# ==================ALTERNATIVE====================
+def count_temperature_ranges(weather):
+    result = {"hot": 0, "warm": 0, "cold": 0}
+
+    for item in weather:
+        temp = item["temperature"]
+
+        if temp >= 30:
+            category = "hot"
+        elif temp >= 20:
+            category = "warm"
+        else:
+            category = "cold"
+
+        result[category] += 1
+
+    return result
+
+# ====================37======================
+def group_by_humidity(weather):
+    if not weather:
+        return {}
+    humidity_grouping =  {}
+    for item in weather:
+        city = item["city"]
+        humidity  = item["humidity"]
+        if humidity in humidity_grouping:
+            humidity_grouping[humidity] += [city]
+        else:
+            humidity_grouping[humidity] = [city] 
+    return humidity_grouping
+
+print(group_by_humidity(weather))
+# =================ALTERNATE===================
+def group_by_humidity(weather):
+    humidity_grouping = {}
+
+    for item in weather:
+        humidity = item["humidity"]
+        city = item["city"]
+
+        humidity_grouping.setdefault(humidity, []).append(city)
+
+    return humidity_grouping
+
+# ==================38==================
+def temperature_range(weather):
+    if not weather:
+        return 0
+    top_temp = max(weather, key=lambda item: item["temperature"])
+    low_temp = min(weather, key=lambda item: item["temperature"])
+    return top_temp["temperature"]-low_temp["temperature"]
+
+print(temperature_range(weather))
+
+# ================ALTERNATE=================
+def temperature_range(weather):
+    if not weather:
+        return 0
+
+    highest = lowest = weather[0]["temperature"]
+
+    for item in weather:
+        temp = item["temperature"]
+
+        if temp > highest:
+            highest = temp
+
+        if temp < lowest:
+            lowest = temp
+
+    return highest - lowest
+
+
+# ==================39-===================
+def weather_summary(weather):
+    if not weather:
+        return {
+        "hottest_city": None,
+        "coldest_city": None,
+        "average_temperature": 0,
+        "most_humid_city": None
+    }
+    hottest = max(weather, key=lambda item: item["temperature"])
+    coldest = min(weather, key=lambda item: item["temperature"]) 
+    temp = [item["temperature"] for item in weather]
+    average = sum(temp)/len(temp)
+    humidity = max(weather, key=lambda item: item["humidity"])
+    
+    result = dict(hottest_city=hottest["city"], coldest_city=coldest["city"], average_temperature=round(average, 2), most_humid_city=humidity["city"])
+    return result
+
+print(weather_summary(weather))
+
+# ===================ALTERNATE===============================
+def hottest_city(weather):
+    return max(weather, key=lambda item: item["temperature"])["city"]
+
+def coldest_city(weather):
+    return min(weather, key=lambda item: item["temperature"])["city"]
+
+def most_humid_city(weather):
+    return max(weather, key=lambda item: item["humidity"])["city"]
+
+def average_temperature(weather):
+    temps = [item["temperature"] for item in weather]
+    return round(sum(temps) / len(temps), 2)
+
+
+def weather_summary(weather):
+    if not weather:
+        return {
+            "hottest_city": None,
+            "coldest_city": None,
+            "average_temperature": 0,
+            "most_humid_city": None
+        }
+
+    return {
+        "hottest_city": hottest_city(weather),
+        "coldest_city": coldest_city(weather),
+        "average_temperature": average_temperature(weather),
+        "most_humid_city": most_humid_city(weather)
+    }
+    
+    
+
+
