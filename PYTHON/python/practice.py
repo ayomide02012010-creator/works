@@ -404,7 +404,8 @@ expenses = [
 #             category_total[category] = amount
 
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
-
+import nltk
+import csv
 analyzer = SentimentIntensityAnalyzer()
 
 # feedback = "This application is terrible!"
@@ -423,3 +424,5 @@ def analyze_sentiment(feedback):
 for feedback in feedbacks:
     result = analyze_sentiment(feedback)
     print(f"Review: {feedback}\nSentiment: {result}\n")
+    csv.__annotations__
+    # nltk.

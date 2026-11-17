@@ -1,132 +1,33 @@
 ==================================================
-                  STUDENT REPORT                  
+             CLASS REPORT — YEAR 10A              
 ==================================================
-Name: Amara Okafor
-SUBJECT RESULTS
-Mathematics --> 70.0
-English --> 83.67
-Physics --> 71.67
-Overall Average: 75.1
-Grade: C
-GPA: 2.0
-==================================================
-                  STUDENT REPORT                  
-==================================================
-Name: Fatima Bello
-SUBJECT RESULTS
-Mathematics --> 77.67
-English --> 82.0
-Physics --> 61.67
-Overall Average: 73.8
-Grade: C
-GPA: 2.0
-==================================================
-                  STUDENT REPORT                  
-==================================================
-Name: Chidi Nwachukwu
-SUBJECT RESULTS
-Mathematics --> 67.67
-English --> 93.33
-Physics --> 60.0
-Overall Average: 73.7
-Grade: C
-GPA: 2.0
-==================================================
-                  STUDENT REPORT                  
-==================================================
-Name: Amara Okafor
-SUBJECT RESULTS
-Mathematics --> 70.0
-English --> 83.67
-Physics --> 71.67
-Overall Average: 75.1
-Grade: C
-GPA: 2.0
-==================================================
-                  STUDENT REPORT                  
-==================================================
-Name: Fatima Bello
-SUBJECT RESULTS
-Mathematics --> 77.67
-English --> 82.0
-Physics --> 61.67
-Overall Average: 73.8
-Grade: C
-GPA: 2.0
-==================================================
-                  STUDENT REPORT                  
-==================================================
-Name: Chidi Nwachukwu
-SUBJECT RESULTS
-Mathematics --> 67.67
-English --> 93.33
-Physics --> 60.0
-Overall Average: 73.7
-Grade: C
-GPA: 2.0
-==================================================
-                  STUDENT REPORT                  
-==================================================
-Name: Amara Okafor
-SUBJECT RESULTS
-Mathematics --> 70.0
-English --> 83.67
-Physics --> 71.67
-Overall Average: 75.1
-Grade: C
-GPA: 2.0
-==================================================
-                  STUDENT REPORT                  
-==================================================
-Name: Fatima Bello
-SUBJECT RESULTS
-Mathematics --> 77.67
-English --> 82.0
-Physics --> 61.67
-Overall Average: 73.8
-Grade: C
-GPA: 2.0
-==================================================
-                  STUDENT REPORT                  
-==================================================
-Name: Chidi Nwachukwu
-SUBJECT RESULTS
-Mathematics --> 67.67
-English --> 93.33
-Physics --> 60.0
-Overall Average: 73.7
-Grade: C
-GPA: 2.0
-==================================================
-                  STUDENT REPORT                  
-==================================================
-Name: Amara Okafor
-SUBJECT RESULTS
-Mathematics --> 70.0
-English --> 83.67
-Physics --> 71.67
-Overall Average: 75.1
-Grade: C
-GPA: 2.0
-==================================================
-                  STUDENT REPORT                  
-==================================================
-Name: Fatima Bello
-SUBJECT RESULTS
-Mathematics --> 77.67
-English --> 82.0
-Physics --> 61.67
-Overall Average: 73.8
-Grade: C
-GPA: 2.0
-==================================================
-                  STUDENT REPORT                  
-==================================================
-Name: Chidi Nwachukwu
-SUBJECT RESULTS
-Mathematics --> 67.67
-English --> 93.33
-Physics --> 60.0
-Overall Average: 73.7
-Grade: C
-GPA: 2.0
+
+STUDENT: Amara Okafor
+--------------------------------------------------
+Mathematics                      70.0           C         2.0
+English                          83.7           B         3.0
+Physics                          71.7           C         2.0
+--------------------------------------------------
+Overall Average:                 75.1          C        2.0
+
+STUDENT: Fatima Bello
+--------------------------------------------------
+Mathematics                      77.7           C         2.0
+English                          82.0           B         3.0
+Physics                          61.7           D         1.0
+--------------------------------------------------
+Overall Average:                 73.8          C        2.0
+
+STUDENT: Chidi Nwachukwu
+--------------------------------------------------
+Mathematics                      67.7           D         1.0
+English                          93.3           A         4.0
+Physics                          60.0           D         1.0
+--------------------------------------------------
+Overall Average:                 73.7          C        2.0
+
+CLASS RANKING
+--------------------------------------------------
+1. Amara Okafor      75.1
+2. Fatima Bello      73.8
+3. Chidi Nwachukwu   73.7

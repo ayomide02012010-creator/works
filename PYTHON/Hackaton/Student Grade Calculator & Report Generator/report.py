@@ -1,24 +1,25 @@
 students = {
-    "Amara Okafor": {
-        "Mathematics": [56,67,87],
-        "English": [72, 88, 91],
-        "Physics": [65, 70, 80]
-    },
-    "Chidi Nwachukwu": {
-        "Mathematics": [56,70,77],
-        "English": [91, 90, 99],
-        "Physics": [55, 55, 70]
-    },
-    "Fatima Bello": {
-            "Mathematics": [59,77,97],
-            "English": [72, 86, 88],
-            "Physics": [65, 30, 90]
-        }
+    # "Amara Okafor": {
+    #     "Mathematics": [56,67,87],
+    #     "English": [72, 88, 91],
+    #     "Physics": [65, 70, 80]
+    # },
+    # "Chidi Nwachukwu": {
+    #     "Mathematics": [56,70,77],
+    #     "English": [91, 90, 99],
+    #     "Physics": [55, 55, 70]
+    # },
+    # "Fatima Bello": {
+    #         "Mathematics": [59,77,97],
+    #         "English": [72, 86, 88],
+    #         "Physics": [65, 30, 90]
+    #     }
 }
 
 def calculate_grade(average):
-    if average < 0 or average > 100:
+    if 0 > average  or average > 100:
         raise ValueError("Average must be between 0 and 100")
+    
     if 0 <= average < 60:
         grade = "F"
         point = 0.0
@@ -44,7 +45,9 @@ def student_summary(student_name, scores):
             continue
         
         average = sum(subject_score)/len(subject_score)
-        subject_scores[subject_name] = average 
+        grade, gpa = calculate_grade(average)
+        
+        subject_scores[subject_name] = average, grade ,gpa
         
         list_of_scores.extend(subject_score)
     if not list_of_scores:
@@ -68,25 +71,101 @@ def rank_students(students):
         students_reports.append(student_report)
     sort_student_report = sorted(students_reports, key=lambda report: report["overall_average"], reverse=True)
     return sort_student_report
-ranking = rank_students(students)
-def write_report(report):
-    with open("report.txt", "a") as file:
+
+def write_report(reports):
+    with open("report.txt", "w") as file:
         file.write("="*50+"\n")
-        file.write("STUDENT REPORT".center(50, " ") +"\n")
+        file.write("CLASS REPORT — YEAR 10A".center(50, " ") +"\n")
         file.write("="*50+"\n")
         
-        file.write(f"Name: {report['name']}\n")
-        file.write("SUBJECT RESULTS\n")
-        for subject, subject_score in report["subjects"].items():
-            file.write(f"{subject} --> {round(subject_score, 2)}\n")
+        for report in reports:
+        
+            file.write(f"\nSTUDENT: {report['name']}\n")
+            file.write("-"*50 + "\n")
+            for subject, subject_score in report["subjects"].items():
+                file.write(f"{subject:<20}  {round(subject_score[0], 1):>15}  {subject_score[1]:>10}  {subject_score[2]:>10}\n")
+            file.write("-"*50 + "\n")
+            file.write(f"Overall Average: {report['overall_average']:>20} {report['grade']:>10} {report['gpa']:>10}\n")
+        
             
-        file.write(f"Overall Average: {report['overall_average']}\n")
-        file.write(f"Grade: {report['grade']}\n")
-        file.write(f"GPA: {report['gpa']}\n")
-for report in ranking:
-    write_report(report)
+        file.write("\nCLASS RANKING\n")
+        file.write("-"*50 + "\n")
+        for num, rep in enumerate(reports, 1):
+            file.write(f"{num}. {rep['name']:<15}   {rep['overall_average']}\n")
+            
+def add_student(students):
+    student_name = input("\nEnter A Student Name: ").strip().capitalize()
+    
+    while student_name == "":
+        print("Student Name Can't Be Empty")
+        student_name = input("\nEnter A Valid Student Name: ").strip().capitalize()
 
-
+    while len(student_name.split()) < 2:
+        print("Both First Name And Surname Is Required")
+        student_name = input("\nEnter A Valid Student Name: ").strip().capitalize()
+    
+    while student_name.isdigit():
+        print("Student Name Must Be A Valid String e.g Amara Okafor")
+        student_name = input("\nEnter A Valid Student Name: ").strip().capitalize() 
+    return student_name        
+def add_subject(students):
+    student_name = add_student(students)
+    subject_name = input("\nEnter A Subject Name: ").strip()
+    
+    while subject_name == "":
+        print("Subject Name Can't Be Empty")
+        subject_name = input("\nEnter A Valid Subject Name: ").strip()
+    
+    while subject_name.isdigit():
+        print("Subject Name Must Be A Valid String e.g Mathematics")
+        subject_name= input("\nEnter A Valid Subject Name: ").strip()
+    return student_name, subject_name
+         
+def main():
+    while True:
+        print("="*32)
+        print("STUDENT GRADE MANAGEMENT".center(32))
+        print("="*32)
+        print(
+"""
+    1. Add Student
+    2. Add Scores
+    3. View Student Report
+    4. View Class Ranking
+    5. Export Class Report
+    6. Exit
+"""
+)
+        user_input = input("> ").strip()
+        if user_input == "1":
+            student_name = add_student(students)
+            while student_name in students:
+                print("Student already exists\n")
+                student_name = input("\nEnter A Valid Student Name: ").strip().capitalize()
+            students[student_name] = {}
+            print("Student Successfully Added")
+                
+        elif user_input == "2":
+            student_name, subject_name = add_subject(students)
+            for name, subject in student.items():   
+                while subject_name in subject:
+                    print("Student already exists\n")
+                    subject_name= input("\nEnter A Valid Subject Name: ").strip()
+            student[name] = {subject:[]}        
+            
+        elif user_input == "3":
+            print(students)
+        elif user_input == "4":
+            pass
+        elif user_input == "5":
+            result = rank_students(students)
+            write_report(result)
+            print("Report successfully exported to report.txt")
+        elif user_input == "6":
+            break
+        else:
+            print("❌ Invalid choice.")
+main()
 
 
 
