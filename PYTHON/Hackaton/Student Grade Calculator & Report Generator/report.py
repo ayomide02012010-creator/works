@@ -67,6 +67,8 @@ def student_summary(student_name, scores):
 def rank_students(students):
     students_reports = []
     for student in students:
+        if not students[student]:
+            print(f"Score has not been recorded for {student}")
         student_report = student_summary(student, students[student])
         students_reports.append(student_report)
     sort_student_report = sorted(students_reports, key=lambda report: report["overall_average"], reverse=True)
@@ -92,34 +94,77 @@ def write_report(reports):
         file.write("-"*50 + "\n")
         for num, rep in enumerate(reports, 1):
             file.write(f"{num}. {rep['name']:<15}   {rep['overall_average']}\n")
-            
-def add_student(students):
-    student_name = input("\nEnter A Student Name: ").strip().capitalize()
-    
-    while student_name == "":
-        print("Student Name Can't Be Empty")
-        student_name = input("\nEnter A Valid Student Name: ").strip().capitalize()
 
-    while len(student_name.split()) < 2:
+def validate_student_name(students, student_name):
+    
+    if student_name == "":
+        print("Student Name Can't Be Empty")
+        return False
+    if len(student_name.split()) < 2:
         print("Both First Name And Surname Is Required")
-        student_name = input("\nEnter A Valid Student Name: ").strip().capitalize()
+        return False
+    first_surn_name = student_name.split()
+    for name in first_surn_name:
+        if name.isdigit():
+            print("Student Name Must Be A Valid String e.g Amara Okafor")
+            return False
+    if student_name in students:
+        print("Student already exists\n")
+        return False
+    return True
+     
+def add_student(students):
+    while True:
+        student_name = input("\nEnter A Student Name: ").strip().capitalize()
+        validation = validate_student_name(students, student_name)  
+        if not validation:
+            continue
+        else:
+            break
+    students[student_name] = {}
+    print("✅ Student Successfully Added") 
+      
+def add_subject_and_score(students):
+    while True:
+        student_name = input("\nEnter The Name Of The Student: ").strip().capitalize()
+        if student_name not in students:
+            print("The Name You Entered Is Not In The Student List. Kindly Add The Student First.")
+            print(f"This Are The Name Of Available Student{students}")
+            continue
+        break
+    while True:
+        subject_name = input("\nEnter Subject Name: ").strip()
+
+        if subject_name == "":
+            print("Subject Name Can't Be Empty")
+            continue
+
+        if subject_name.isdigit():
+            print("Subject Name Must Be A Valid String e.g Mathematics")
+            continue
+        
+        # if subject_name in students[student_name]:
+        #     print("Subject name already exists\n")
+        #     continue
+        break
+    while True:
+        subject_score = input("\nEnter Subject Score: ").strip()
+        if subject_score == "":
+            print("Subject Score Can't Be Empty")
+            continue
+
+        if not subject_score.isdigit():
+            print("Subject Score Must Be A Valid Integer e.g 67")
+            continue
+        
+        if len(subject_score) > 3:
+            print("Score Must Be Between The Range Of 0 - 100")
+            continue
+        
+        break
+    students[student_name] = {subject_name:[subject_score]}
+    print("✅ Score Is Added Successfully!")
     
-    while student_name.isdigit():
-        print("Student Name Must Be A Valid String e.g Amara Okafor")
-        student_name = input("\nEnter A Valid Student Name: ").strip().capitalize() 
-    return student_name        
-def add_subject(students):
-    student_name = add_student(students)
-    subject_name = input("\nEnter A Subject Name: ").strip()
-    
-    while subject_name == "":
-        print("Subject Name Can't Be Empty")
-        subject_name = input("\nEnter A Valid Subject Name: ").strip()
-    
-    while subject_name.isdigit():
-        print("Subject Name Must Be A Valid String e.g Mathematics")
-        subject_name= input("\nEnter A Valid Subject Name: ").strip()
-    return student_name, subject_name
          
 def main():
     while True:
@@ -138,21 +183,9 @@ def main():
 )
         user_input = input("> ").strip()
         if user_input == "1":
-            student_name = add_student(students)
-            while student_name in students:
-                print("Student already exists\n")
-                student_name = input("\nEnter A Valid Student Name: ").strip().capitalize()
-            students[student_name] = {}
-            print("Student Successfully Added")
-                
+            add_student(students)
         elif user_input == "2":
-            student_name, subject_name = add_subject(students)
-            for name, subject in student.items():   
-                while subject_name in subject:
-                    print("Student already exists\n")
-                    subject_name= input("\nEnter A Valid Subject Name: ").strip()
-            student[name] = {subject:[]}        
-            
+            add_subject_and_score(students)
         elif user_input == "3":
             print(students)
         elif user_input == "4":
@@ -188,7 +221,7 @@ main()
 
 
 
-
+``
 
 
 
