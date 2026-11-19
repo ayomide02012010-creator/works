@@ -2,32 +2,37 @@
              CLASS REPORT — YEAR 10A              
 ==================================================
 
-STUDENT: Amara Okafor
+STUDENT: Amara okafor
 --------------------------------------------------
-Mathematics                      70.0           C         2.0
-English                          83.7           B         3.0
-Physics                          71.7           C         2.0
+Math                             93.5           A         4.0
+English                          95.0           A         4.0
 --------------------------------------------------
-Overall Average:                 75.1          C        2.0
+Overall Average:                 94.2          A        4.0
 
-STUDENT: Fatima Bello
+STUDENT: Ali abdulrasaq
 --------------------------------------------------
-Mathematics                      77.7           C         2.0
-English                          82.0           B         3.0
-Physics                          61.7           D         1.0
+English                          84.5           B         3.0
+Math                             94.5           A         4.0
 --------------------------------------------------
-Overall Average:                 73.8          C        2.0
+Overall Average:                 89.5          B        3.0
 
-STUDENT: Chidi Nwachukwu
+STUDENT: Sa'ad abdulateef
 --------------------------------------------------
-Mathematics                      67.7           D         1.0
-English                          93.3           A         4.0
-Physics                          60.0           D         1.0
+Math                             90.0           A         4.0
+English                          80.0           B         3.0
 --------------------------------------------------
-Overall Average:                 73.7          C        2.0
+Overall Average:                 85.0          B        3.0
+
+STUDENT: Fatima bello
+--------------------------------------------------
+Math                             87.5           B         3.0
+English                          81.0           B         3.0
+--------------------------------------------------
+Overall Average:                 84.2          B        3.0
 
 CLASS RANKING
 --------------------------------------------------
-1. Amara Okafor      75.1
-2. Fatima Bello      73.8
-3. Chidi Nwachukwu   73.7
+1. Amara okafor      94.2
+2. Ali abdulrasaq    89.5
+3. Sa'ad abdulateef   85.0
+4. Fatima bello      84.2
