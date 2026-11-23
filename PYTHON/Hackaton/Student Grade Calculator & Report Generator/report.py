@@ -1,7 +1,100 @@
+import json
+
+#=====================   HANDLE INPUT  ======================
 def is_empty(parameter):
     return not parameter
+
+def validate_student_name(student_name):
+    if is_empty(student_name):
+        print("Student Name Can't Be Empty")
+        return False
+    if len(student_name.split()) < 2:
+        print("Both First Name And Surname Is Required")
+        return False
+    all_name = student_name.split()
+    for name in all_name:
+        if any(char.isdigit() for char in name):
+            print("Student Name Must Be A Valid String e.g Amara Okafor")
+            return False
+    return True
+
+def validating_name():
+    while True:
+        student_name = input("\nEnter A Student Name: ").strip().title()
+        validation = validate_student_name(student_name)  
+        if not validation:
+            continue
+        else:
+            break
+    return student_name
+
+def add_student(students):
+    student_name = validating_name()
+    if student_name in students:
+        print(f"{student_name} already exist")
+        return
+    students[student_name] = {}
+    print("✅ Student Successfully Added") 
+
+def add_subject():
+    while True:
+        subject_name = input("\nEnter Subject Name: ").strip().title()
+
+        if is_empty(subject_name):
+            print("Subject Name Can't Be Empty")
+            continue
+
+        if subject_name.isdigit():
+            print("Subject Name Must Be A Valid String e.g Mathematics")
+            continue
+    
+        break
+    return subject_name
+
+def add_score():
+    while True:
+        subject_score = input("\nEnter Subject Score: ").strip()
+        if subject_score == "":
+            print("Subject Score Can't Be Empty")
+            continue
+
+        if not subject_score.isdigit():
+            print("Subject Score Must Be A Valid Integer e.g 67")
+            continue
+        
+        # if len(subject_score) > 3 or (len(subject_score) == 3 and (int(subject_score[0]) > 1 or int(subject_score[1]) > 0 or int(subject_score[2]) > 0)):
+        if not 0 <= int(subject_score) <= 100:
+            print("Score Must Be Between 0 and 100")
+            continue
+        break
+    return int(subject_score)
+
+def confirm_student(students):
+    while True:
+        student_name = validating_name()
+        if student_name not in students:
+            print("The Name You Entered Is Not In The Student List. Kindly Add The Student First.\n")
+            print(f"This Are The Name Of Available Student\n{list(students)}")
+            continue
+        break
+    return student_name
+
+def add_student_info(students):
+    if is_empty(students):
+        print("No Available student")
+        return
+    
+    student_name = confirm_student(students)
+    subject_name = add_subject()
+    subject_score = add_score()
+    
+    if subject_name not in students[student_name]:
+        students[student_name][subject_name] = [] 
+    students[student_name][subject_name].append(subject_score)
+    print("✅ Score Is Added Successfully!")
+#=======================  HANDLE REPORT  ========================
 def calculate_grade(average):
-    if 0 > average  or average > 100:
+    if not 0 <= average <= 100:
         raise ValueError("Average must be between 0 and 100")
     
     if 0 <= average < 60:
@@ -48,23 +141,13 @@ def student_summary(student_name, scores):
     }
     return subject_averages
 
-def rank_students(students):
-    students_report = []
-    if is_empty(students):
-        print("No Record Of Student")
-        return students_report
-    for student in students:
-        if is_empty(students[student]):
-            print(f"Subject has not been recorded for {student}")
-            continue
-        try:
-            student_report = student_summary(student, students[student])
-        except ValueError:
-            print(f"{student} has no score")
-            continue
-        students_report.append(student_report)
-    sort_student_report = sorted(students_report, key=lambda report: report["overall_average"], reverse=True)
-    return sort_student_report
+def format_student_report(summary):
+    student_report = ""
+    student_report += f"\nSTUDENT: {summary['name']}\n{"-"*50}\n"
+    for subject, subject_score in summary["subjects"].items():
+        student_report += f"{subject:<20}  {subject_score[0]:>15.1f}  {subject_score[1]:>10}  {subject_score[2]:>10}\n"
+    student_report += f"{"-"*50 + "\n"}Overall Average: {summary['overall_average']:>20} {summary['grade']:>10} {summary['gpa']:>10}\n"
+    return student_report
 
 def write_report(reports):
     if is_empty(reports):
@@ -76,14 +159,8 @@ def write_report(reports):
         file.write("="*50+"\n")
         
         for report in reports:
-        
-            file.write(f"\nSTUDENT: {report['name']}\n")
-            file.write("-"*50 + "\n")
-            for subject, subject_score in report["subjects"].items():
-                file.write(f"{subject:<20}  {round(subject_score[0], 1):>15}  {subject_score[1]:>10}  {subject_score[2]:>10}\n")
-            file.write("-"*50 + "\n")
-            file.write(f"Overall Average: {report['overall_average']:>20} {report['grade']:>10} {report['gpa']:>10}\n")
-        
+            result = format_student_report(report)
+            file.write(result)
             
         file.write("\nCLASS RANKING\n")
         file.write("-"*50 + "\n")
@@ -91,37 +168,6 @@ def write_report(reports):
             file.write(f"{num}. {rep['name']:<15}   {rep['overall_average']}\n")
         
         print("✅ Report successfully exported to report.txt")
-        
-def validate_student_name(student_name):
-    
-    if is_empty(student_name):
-        print("Student Name Can't Be Empty")
-        return False
-    if len(student_name.split()) < 2:
-        print("Both First Name And Surname Is Required")
-        return False
-    all_name = student_name.split()
-    for name in all_name:
-        if any(char.isdigit() for char in name):
-            print("Student Name Must Be A Valid String e.g Amara Okafor")
-            return False
-    return True
-def validating_name():
-    while True:
-        student_name = input("\nEnter A Student Name: ").strip().title()
-        validation = validate_student_name(student_name)  
-        if not validation:
-            continue
-        else:
-            break
-    return student_name
-def add_student(students):
-    student_name = validating_name()
-    if student_name in students:
-        print(f"{student_name} already exist")
-        return
-    students[student_name] = {}
-    print("✅ Student Successfully Added") 
 
 def display_student_report(students, name):
     if name not in students:
@@ -132,68 +178,60 @@ def display_student_report(students, name):
     except ValueError:
         print(f"{name} has no record on score")    
         return
-    print(f"\nSTUDENT: {summary['name']}")
-    print("-"*50)
-    for subject, subject_score in summary["subjects"].items():
-        print(f"{subject:<20}  {round(subject_score[0], 1):>15}  {subject_score[1]:>10}  {subject_score[2]:>10}")
-    print("-"*50 + "\n")
-    print(f"Overall Average: {summary['overall_average']:>20} {summary['grade']:>10} {summary['gpa']:>10}\n")
-            
+    result = format_student_report(summary)
+    print(result)
     print("=" * 50 + "\n")
-def add_subject_and_score(students):
-    if not students:
-        print("No Student Added")
-        return
-    while True:
-        student_name = validating_name()
-        if student_name not in students:
-            print("The Name You Entered Is Not In The Student List. Kindly Add The Student First.\n")
-            print(f"This Are The Name Of Available Student\n{list(students)}")
-            continue
-        break
-    while True:
-        subject_name = input("\nEnter Subject Name: ").strip().title()
+#=======================    RANKING      ========================
 
-        if is_empty(subject_name):
-            print("Subject Name Can't Be Empty")
-            continue
-
-        if subject_name.isdigit():
-            print("Subject Name Must Be A Valid String e.g Mathematics")
-            continue
-  
-        break
-    while True:
-        subject_score = input("\nEnter Subject Score: ").strip()
-        if subject_score == "":
-            print("Subject Score Can't Be Empty")
-            continue
-
-        if not subject_score.isdigit():
-            print("Subject Score Must Be A Valid Integer e.g 67")
-            continue
-        
-        # if len(subject_score) > 3 or (len(subject_score) == 3 and (int(subject_score[0]) > 1 or int(subject_score[1]) > 0 or int(subject_score[2]) > 0)):
-        if not 0 <= int(subject_score) <= 100:
-            print("Score Must Be Between 0 and 100")
-            continue
-        break
-    if subject_name not in students[student_name]:
-        students[student_name][subject_name] = [] 
-    students[student_name][subject_name].append(int(subject_score))
-    print("✅ Score Is Added Successfully!")
-    
 def class_ranking(ranks):
     if is_empty(ranks):
+        print("No Record Of Student")
         return
     print("\nCLASS RANKING\n")
     print("-"*50 + "\n")
     for num, rep in enumerate(ranks, 1):
         print(f"{num}. {rep['name']:<15}   {rep['overall_average']}\n")
          
+def rank_students(students):
+    students_report = []
+    
+    if is_empty(students):
+        return students_report
+    for student in students:
+        if is_empty(students[student]):
+            continue
+        try:
+            student_report = student_summary(student, students[student])
+        except ValueError:
+            continue
+        students_report.append(student_report)
+    sort_student_report = sorted(students_report, key=lambda report: report["overall_average"], reverse=True)
+    return sort_student_report
+
+# ===================== SAVE AND LOAD DATA   =====================
+
+def save_students(students):
+    with open("students.json", "w") as file:
+        json.dump(students, file, indent=4)
+        
+        
+def load_students():
+    try:
+        with open("students.json", "r") as file:
+            students = json.load(file)
+            if isinstance(students, dict):
+                return students
+            else:
+                return {}
+    except FileNotFoundError:
+        return {}  
+    except json.JSONDecodeError:
+        return {}
+# ======================= PROGRAM ENTRY ===========================
+    
 def main():
     print("🎓 Welcome to the Student Grade Management System!\n")
-    students = {}
+    students = load_students()
     
     while True:
         print("="*32)
@@ -212,8 +250,10 @@ def main():
         user_input = input("> ").strip()
         if user_input == "1":
             add_student(students)
+            save_students(students)
         elif user_input == "2":
-            add_subject_and_score(students)
+            add_student_info(students)
+            save_students(students)
         elif user_input == "3":
             student_name = validating_name()
             display_student_report(students, student_name)

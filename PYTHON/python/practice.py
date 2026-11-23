@@ -426,3 +426,17 @@ for feedback in feedbacks:
     print(f"Review: {feedback}\nSentiment: {result}\n")
     csv.__annotations__
     # nltk.
+    
+    
+def format_student_report(name, average, grade):
+    text = f"Student: {name}\nAverage: {average}\nGrade: {grade}"
+    return text
+
+def write_report(text):
+    with open("report.txt", "w") as file:
+        file.write(text)
+def print_rank(text):
+    print(text)
+text = format_student_report("amara okafor", 89.8, "B")
+write_report(text)
+print_rank(text)
