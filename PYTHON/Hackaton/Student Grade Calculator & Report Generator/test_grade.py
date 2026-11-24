@@ -1,4 +1,4 @@
-from report import calculate_grade, student_summary,
+from report import calculate_grade, student_summary
 import pytest
 
 def test_calculate_grade_raises_ValueError_above_100():

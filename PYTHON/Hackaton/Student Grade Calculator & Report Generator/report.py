@@ -32,9 +32,10 @@ def add_student(students):
     student_name = validating_name()
     if student_name in students:
         print(f"{student_name} already exist")
-        return
+        return False
     students[student_name] = {}
-    print("✅ Student Successfully Added") 
+    print("✅ Student Successfully Added")
+    return True 
 
 def add_subject():
     while True:
@@ -82,7 +83,7 @@ def confirm_student(students):
 def add_student_info(students):
     if is_empty(students):
         print("No Available student")
-        return
+        return False
     
     student_name = confirm_student(students)
     subject_name = add_subject()
@@ -92,7 +93,22 @@ def add_student_info(students):
         students[student_name][subject_name] = [] 
     students[student_name][subject_name].append(subject_score)
     print("✅ Score Is Added Successfully!")
+    return True
 #=======================  HANDLE REPORT  ========================
+def display_at_risk_students(at_risk):
+    if is_empty(at_risk):
+        print("No students are currently at risk.")
+        return False
+    
+    print("\nSTUDENT AT RISK (< 60)")
+    print("="*32)
+    for idx, each_risk in enumerate(at_risk, 1):
+        print(f"\n{idx}. {each_risk["name"]} | {each_risk["overall_average"]}  {each_risk["grade"]}\n")
+    return True
+
+def identify_at_risk_students(reports):
+    return list(filter(lambda grade: grade["overall_average"] < 60, reports)) #[report for report in reports if report["overall_average"] < 60]
+
 def calculate_grade(average):
     if not 0 <= average <= 100:
         raise ValueError("Average must be between 0 and 100")
@@ -213,8 +229,7 @@ def rank_students(students):
 def save_students(students):
     with open("students.json", "w") as file:
         json.dump(students, file, indent=4)
-        
-        
+              
 def load_students():
     try:
         with open("students.json", "r") as file:
@@ -244,16 +259,23 @@ def main():
     3. View Student Report
     4. View Class Ranking
     5. Export Class Report
-    6. Exit
+    6. Veiw Student At Risk
+    7. Exit
 """
 )
         user_input = input("> ").strip()
         if user_input == "1":
-            add_student(students)
-            save_students(students)
+            exist = add_student(students)
+            if not exist:
+                continue
+            else:
+                save_students(students)
         elif user_input == "2":
-            add_student_info(students)
-            save_students(students)
+            available = add_student_info(students)
+            if not available:
+                continue
+            else:
+                save_students(students)
         elif user_input == "3":
             student_name = validating_name()
             display_student_report(students, student_name)
@@ -264,6 +286,10 @@ def main():
             result = rank_students(students)
             write_report(result)
         elif user_input == "6":
+            rank = rank_students(students)
+            student_at_risk = identify_at_risk_students(rank)
+            display_at_risk = display_at_risk_students(student_at_risk)
+        elif user_input == "7":
             break
         else:
             print("❌ Invalid choice.")
